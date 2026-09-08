@@ -318,14 +318,14 @@ List<T>::~List() {
     while (actual != nullptr) {
         Node *siguiente = actual->next;
         delete actual;
-        actual = siguiente
+        actual = siguiente;
     }
 }
 
 template<typename T>
 bool List<T>::is_empty() const {
     // TODO: devolver si la lista está vacía.
-    if (this->size =0) {
+    if (this->size ==0) {
         return true;
     } else {
         return false;
