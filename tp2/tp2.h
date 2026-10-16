@@ -325,11 +325,7 @@ List<T>::~List() {
 template<typename T>
 bool List<T>::is_empty() const {
     // TODO: devolver si la lista está vacía.
-    if (this->size ==0) {
-        return true;
-    } else {
-        return false;
-    }
+    return size == 0;
 }
 
 template<typename T>
@@ -342,7 +338,7 @@ template<typename T>
 void List<T>::insert_head(const T& value) {
     // TODO: reservar un nodo con new, enlazarlo al principio y
     // actualizar head/tail/size.
-    Node *nuevo = new Node (value);
+    Node *nuevo = new Node(value);
     nuevo->prev = nullptr;
     nuevo->next = this->head;
     if (this->head !=nullptr) { //ya habia al menos un elemento, el viejo head pasa a tener como anterior al nuevo. 
@@ -368,7 +364,7 @@ void List<T>::insert_tail(const T& value) {
         this->head = nuevo;
     }
     this->tail =nuevo;
-    this->size ++;
+    this->size++;
 }
 
 template<typename T>
@@ -377,10 +373,10 @@ T List<T>::pop_head() {
     Node *viejo =this->head;
     T valor = viejo->value;
     this->head = viejo->next;
-    if (this->head != nullptr) {
+    if (this->head != nullptr) { //la lista no queda vacía después de eliminar el primero (o sea, el anterior head tenía un siguiente)
         this->head->prev = nullptr;
     } else {
-        this->tail =nullptr;
+        this->tail =nullptr; //el head ya se modificó para que sea nullptr, queda cambiar el tail
     }
     delete viejo;
     this->size --;
@@ -418,11 +414,13 @@ const T& List<T>::peek_tail() const {
 template <typename T>
 typename List<T>::ListIter List<T>::create_head() {
     // TODO: retornar un iterador parado en el principio de la lista.
+    return ListIter(this, this->head); //el constructor toma como paramétros la lista (this) y el valor donde arranca el iterador (primer elemento)
 }
 
 template <typename T>
 typename List<T>::ListIter List<T>::create_tail() {
     // TODO: retornar un iterador parado en el final de la lista.
+    return ListIter(this, this->tail);
 }
 
 /* ---------------------------------------------------------------
@@ -440,48 +438,116 @@ List<T>::ListIter::ListIter(List *list, List::Node *start) {
 template <typename T>
 bool List<T>::ListIter::forward() {
     // TODO: avanzar una posición si se puede.
+    if (curr!=nullptr && curr->next!=nullptr) { //la primera condición es por si la lista está vacía, así no tira error.
+        curr=curr->next;
+        return true;
+    }
     return false;
 }
 
 template <typename T>
 bool List<T>::ListIter::backward() {
     // TODO: retroceder una posición si se puede.
+    if (curr!=nullptr && curr->prev!=nullptr) {
+        curr=curr->prev;
+        return true;
+    }
     return false;
 }
 
 template <typename T>
 const T&  List<T>::ListIter::peek_current() const {
     // TODO: devolver el valor actual
+    return curr->value;
 }
 
 template <typename T>
 bool List<T>::ListIter::at_last() const {
     // TODO: devolver si el iterador está en el último elemento.
-    return false;
+    return curr==nullptr || curr->next==nullptr; //||="or", si la lista esta vacia o si el next es nullptr
 }
 
 template <typename T>
 bool List<T>::ListIter::at_first() const {
     // TODO: devolver si el iterador está en el primer elemento.
-    return false;
+    return curr==nullptr || curr->prev==nullptr;
 }
 
 template <typename T>
 bool List<T>::ListIter::insert_after(const T&value) {
     // TODO: insertar un valor detrás del actual con new.
-    return false;
+    if (list->size==0) { //si la lista esta vacía
+        list->insert_head(value); //no sumo largo porque ya lo hace insert_head()
+        curr=list->head;
+        return true;
+    }
+    if (curr->next==nullptr) { //si se quiere insertar en la ultima posición
+        list->insert_tail(value);
+        return true;
+    } else {
+        Node* nuevo = new Node(value);
+        Node* nuevoSiguiente = curr->next;
+        nuevo->prev = curr;
+        nuevo->next = nuevoSiguiente;
+        curr->next = nuevo;
+        nuevoSiguiente->prev = nuevo;
+        list->size++;
+        return true;
+    }
 }
 
 template <typename T>
 bool List<T>::ListIter::insert_before(const T&value) {
     // TODO: insertar un valor delante del actual con new.
-    return false;
+    if (list->size==0) { 
+        list->insert_head(value); 
+        curr=list->head;
+        return true;
+    }
+    if (curr->prev==nullptr) { //si se quiere insertar en la primera posición
+        list->insert_head(value);
+        return true;
+    } else {
+        Node* nuevo = new Node(value);
+        Node* nuevoAnterior = curr->prev;
+        nuevo->prev = nuevoAnterior;
+        nuevo->next = curr;
+        curr->prev = nuevo;
+        nuevoAnterior->next = nuevo;
+        list->size++;
+        return true;
+    }
 }
 
 template <typename T>
 T List<T>::ListIter::remove() {
     // TODO: sacar el nodo actual (con delete), reposicionar el iterador
     // y devolver el valor que tenía.
+    T valor = curr->value;
+
+    if (curr->prev!=nullptr) {
+        curr->prev->next = curr->next;
+    } else {
+        list->head = curr->next; //si era el primer elemento el que se elimina, el head pasa a ser el segundo.
+
+    } if (curr->next!= nullptr) {
+        curr->next->prev = curr->prev;
+    } else {
+        list->tail = curr->prev;
+    }
+    
+    Node* nuevoActual;
+    if (curr->next!=nullptr) { //priorizo mover el iterador para adelante.
+        nuevoActual=curr->next;
+    } else {
+        nuevoActual=curr->prev;
+    }
+
+    delete curr;
+    curr = nuevoActual;
+    list->size--;
+    return valor;
+
 }
 
 #endif // TP2_H
