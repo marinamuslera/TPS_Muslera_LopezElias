@@ -1,0 +1,550 @@
+\documentclass{article}
+
+% ---------------------------------------------------------------------
+% Preámbulo alineado al de teoricas/guia_tads/main.tex y guias/macros.tex
+% (misma fuente, márgenes, encabezado con logo, título en versalitas,
+% cajas de concepto/regla/invariante). Self-contained.
+% ---------------------------------------------------------------------
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{minted}
+\usepackage{clrscode3e}
+\usepackage{booktabs}
+\usepackage[spanish,es-noindentfirst,es-nosectiondot,es-nolists,
+es-noshorthands,es-lcroman,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage[svgnames]{xcolor}
+\usepackage[hidelinks,urlcolor=blue]{hyperref}
+\hypersetup{colorlinks=true, allcolors=Navy, pdfstartview={XYZ null null 1}}
+\usepackage[margin=2.5cm,headsep=0.8cm,headheight=1.3cm,footskip=1cm]{geometry}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.4\baselineskip}
+
+\newcommand{\TODO}[1]{\textcolor{red}{[TODO: #1]}}
+
+% Indicador de TAD para cada operación (igual que en la Guía de TADs).
+\newcommand{\OP}[2]{\proc{#1}_{\text{#2}}}
+
+\newminted{cpp}{autogobble,tabsize=4,fontsize=\small}
+\newmintinline{cpp}{}
+
+\newtcolorbox{concepto}[1]{
+  colback=blue!5, colframe=blue!55!black, colbacktitle=blue!15,
+  coltitle=black, fonttitle=\bfseries, boxrule=0.6pt, arc=2pt, title={#1},
+}
+\newtcolorbox{regla}[1]{
+  colback=orange!5, colframe=orange!65!black, colbacktitle=orange!20,
+  coltitle=black, fonttitle=\bfseries, boxrule=0.6pt, arc=2pt, title={#1},
+}
+\newtcolorbox{invariante}[1]{
+  colback=green!5, colframe=green!40!black, colbacktitle=green!15,
+  coltitle=black, fonttitle=\bfseries, boxrule=0.6pt, arc=2pt, title={#1},
+}
+
+\setlist[itemize]{topsep=2pt, itemsep=2pt}
+\setlist[enumerate]{topsep=2pt, itemsep=2pt}
+
+%%%% Encabezado y pie de página %%%%
+\fancypagestyle{plain}{%
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[L]{\raisebox{-0.15cm}{\includegraphics[height=0.8cm]{logoUdesa.png}}}
+\fancyhead[R]{\footnotesize Algoritmos y Estructuras de Datos - IIA - UdeSA}
+}
+\pagestyle{plain}
+
+\newcommand{\titulo}[2]{%
+\begin{center}%
+{\Large\textsc{Trabajo Práctico #1: #2}}
+\end{center}}
+
+\begin{document}
+
+\titulo{3}{Goleadores del Mundial}
+
+\begin{center}
+\begin{minipage}{0.85\textwidth}
+\small
+\textbf{Tema:} tablas de hash y TAD Diccionario. \hfill
+\textbf{Lenguaje:} C++. \\
+\textbf{Modalidad:} en grupos de a 2. \hfill
+\textbf{Fecha de entrega:} 5 de noviembre, 23:59.
+\end{minipage}
+\end{center}
+
+% =======================================================================
+\section{Objetivo}
+% =======================================================================
+
+En este trabajo vamos a representar un diccionario de jugadores y goles usando una \textbf{tabla de hash}, para que las operaciones de inserción, búsqueda y eliminación sean más rápidas que con un árbol balanceado (ver TAD Diccionario representado sobre un AVL en la teórica con
+operaciones en $O(\log n)$).
+Lo vamos a usar para llevar la tabla de
+goleadores de un Mundial.
+
+El trabajo se organiza en \textbf{tres TADs}, cada uno implementado
+usando únicamente la interfaz del que tiene debajo:
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+TAD & ¿Genérico? & Se representa con \\
+\midrule
+\texttt{Goleadores} & No: jugador (\texttt{string}) $\to$ goles (\texttt{int}) & un \texttt{Diccionario<string, int>} \\
+\texttt{Diccionario<K, V>} & Sí & una \texttt{TablaHash<K, V>} \\
+\texttt{TablaHash<K, V>} & Sí & un arreglo de \emph{buckets} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Para cada TAD se presenta la \textbf{interfaz} (con su contrato y su costo) y
+la \textbf{representación} (con su invariante). El objetivo es realizar la implementación de estos tipos de datos.
+
+Además, \texttt{TablaHash} y \texttt{Diccionario} ofrecen cada uno un
+\textbf{iterador} para recorrer su contenido (sección~\ref{sec:iterador}).
+
+\begin{regla}{Sobre las complejidades de este enunciado}
+En todas las cotas, $n$ representa la cantidad de claves guardadas en la
+estructura en ese momento. Cuando dice \textbf{en promedio} se asume la hipótesis de \textbf{hashing uniforme} de la teórica: la función de hash reparte las claves de manera uniforme entre los buckets.
+Cuando dice \textbf{amortizado} nos referimos al costo por operación a
+lo largo de una secuencia de operaciones: alguna puede ser cara (la que
+redimensiona), pero repartido entre todas el costo es el indicado. Es la
+misma cuenta de la teórica para $\proc{InsertarAlFinal}$ del arreglo
+dinámico y para la redimensión de la tabla de hash.
+Salvo que se aclare, se supone $T_h \in O(1)$ (con $T_h$ el costo de
+calcular la función de hash de una clave, como en la teórica) y que
+comparar dos claves cuesta $O(1)$.
+
+Lo marcado como \textbf{optativo} no es necesario para aprobar.
+\end{regla}
+
+% =======================================================================
+\section{TAD Iterador}
+\label{sec:iterador}
+% =======================================================================
+
+Es el TAD Iterador de la teórica: abstrae el \textbf{recorrido} de una
+estructura, sin que quien lo usa conozca su representación interna. En
+este trabajo lo que se recorre son pares $\langle clave, valor \rangle$,
+así que $\proc{Actual}$ se separa en dos operaciones.
+
+\subsection{Interfaz}
+
+\begin{itemize}
+\item $\OP{CrearIterador}{Iterador}(estructura)$: crea un iterador sobre $estructura$. \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve un iterador al primer par de $estructura$ (si no tiene pares, el iterador ya está al final).}
+\item $\OP{HayMas}{Iterador}(it)$: indica si quedan pares por recorrer. \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve si quedan pares por recorrer, sin modificar $it$.}
+\item $\OP{Clave}{Iterador}(it)$: la clave del par actual. \\
+  {\footnotesize \textbf{Pre:} $\OP{HayMas}{Iterador}(it)$. \quad \textbf{Post:} devuelve la clave del par actual, sin modificar $it$.}
+\item $\OP{Valor}{Iterador}(it)$: el valor del par actual. \\
+  {\footnotesize \textbf{Pre:} $\OP{HayMas}{Iterador}(it)$. \quad \textbf{Post:} devuelve el valor del par actual, sin modificar $it$.}
+\item $\OP{Avanzar}{Iterador}(it)$: pasa al par siguiente. \\
+  {\footnotesize \textbf{Pre:} $\OP{HayMas}{Iterador}(it)$. \quad \textbf{Post:} $it$ pasa al par siguiente (o al final, si no hay más).}
+\end{itemize}
+
+Un recorrido completo pasa por \textbf{cada par exactamente una vez}, en
+\textbf{algún orden} (no se puede asumir cuál). El iterador deja de ser
+válido si se inserta o se elimina en la estructura mientras se lo usa.
+
+El costo de cada operación depende de la estructura que se recorre, y
+se indica en la sección de cada una.
+
+\subsection{En C++}
+
+No hay una única clase \texttt{Iterador}: cada estructura define la
+suya, \textbf{anidada} dentro de su propia clase y con estas mismas
+operaciones. El código que recorre es siempre igual; sólo cambia el tipo
+del iterador:
+
+\begin{cppcode}
+TablaHash<std::string, int>::Iterador it = tabla.crear_iterador();
+while (it.hay_mas()) {
+    std::cout << it.clave() << ": " << it.valor() << std::endl;
+    it.avanzar();
+}
+\end{cppcode}
+
+En el esqueleto, la declaración de cada \texttt{Iterador} ya está
+escrita: hay que completar su representación (en \texttt{TablaHash}) y
+el cuerpo de sus operaciones.
+
+% =======================================================================
+\section{TAD TablaHash}
+% =======================================================================
+
+Una tabla de hash con \textbf{direccionamiento cerrado}: es un arreglo de
+\emph{buckets}, donde cada bucket guarda todos los pares
+$\langle clave, valor \rangle$ cuyo hash cae en esa posición.
+
+Es la misma estructura de la teórica, pero \textbf{no la misma
+interfaz}: allá la tabla era directamente el diccionario
+($\proc{Insertar}$ reemplazaba el valor si la clave ya estaba, y
+$\proc{Pertenece}$ y $\proc{Obtener}$ eran operaciones de la tabla). Acá la
+tabla es la capa de abajo, con operaciones más simples y precondiciones
+más fuertes; el comportamiento de diccionario lo agrega el TAD
+Diccionario, usándola.
+
+% Es la estructura ``de abajo'': no sabe qué es un diccionario. Por eso
+% sus operaciones son simples y tienen \textbf{precondiciones fuertes}
+% (quien la usa es responsable de cumplirlas).
+
+\subsection{Interfaz}
+
+Con $n$ la cantidad de claves guardadas y $c$ la capacidad (cantidad de
+buckets) de la tabla:
+
+\begin{itemize}
+\item $\OP{TablaVacia}{TablaHash}(c_0)$: crea una tabla vacía. \hfill $O(c_0)$ \\
+  {\footnotesize \textbf{Pre:} $c_0 \geq 1$. \quad \textbf{Post:} devuelve una tabla sin claves, con $c_0$ buckets.}
+\item $\OP{Insertar}{TablaHash}(T, clave, valor)$: agrega un par nuevo. \hfill $O(1)$ amortizado, $O(n)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} $clave \notin T$. \quad \textbf{Post:} $T$ tiene además el par $\langle clave, valor \rangle$.}
+\item $\OP{Eliminar}{TablaHash}(T, clave)$: quita $clave$ y su valor. \hfill $O(1)$ en promedio, $O(n)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} $clave \in T$. \quad \textbf{Post:} $T$ ya no tiene a $clave$.}
+\item $\OP{Buscar}{TablaHash}(T, clave)$: busca el valor de $clave$. \hfill $O(1)$ en promedio, $O(n)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} si $clave \in T$, devuelve una referencia a su valor (se puede leer y modificar); si no, $\const{nil}$.}
+\item $\OP{Cantidad}{TablaHash}(T)$: cantidad de claves guardadas. \hfill $O(1)$ \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve $n$.}
+\item $\OP{Capacidad}{TablaHash}(T)$: cantidad de buckets. \hfill $O(1)$ \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve $c$.}
+\item $\OP{Colisiones}{TablaHash}(T)$: cantidad de colisiones. \hfill $O(c)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve $n$ menos la cantidad de buckets no vacíos (es decir, cuántas claves comparten bucket con otra que llegó antes).}
+\item $\OP{CrearIterador}{TablaHash}(T)$: crea un iterador sobre los pares de $T$. \hfill $O(c)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve un iterador al primer par de $T$ (ver sección~\ref{sec:iterador}).}
+\end{itemize}
+
+En la implementación, además, la tabla tiene que \textbf{liberar toda su memoria} al destruirse (destructor), en $O(n + c)$ en peor caso.
+
+\subsection{Iterador de la tabla}
+
+Las operaciones son las del TAD Iterador (sección~\ref{sec:iterador}),
+con estos costos:
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Operación & Costo \\
+\midrule
+$\proc{HayMas}$, $\proc{Clave}$, $\proc{Valor}$ & $O(1)$ \\
+$\proc{Avanzar}$ & $O(c)$ en peor caso \\
+Recorrido completo ($\proc{CrearIterador}$ y $\proc{Avanzar}$ hasta el final) & $O(n + c)$ en peor caso \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+A diferencia del iterador de la lista enlazada, acá $\proc{Avanzar}$
+\textbf{no} es $O(1)$: puede tener que pasar por muchos buckets vacíos
+hasta encontrar el par siguiente. Pero cada bucket y cada par se miran
+una sola vez en todo el recorrido, y por eso el total es $O(n + c)$.
+
+La representación del iterador también \textbf{la eligen ustedes} (¿qué
+necesita recordar para saber dónde está y cómo seguir?), y también
+tienen que escribir su invariante como comentario.
+
+\subsection{Representación interna (e invariante)}
+
+La representación \textbf{la eligen ustedes}: en particular, qué
+estructura usan para cada bucket (una lista enlazada, un arreglo
+dinámico, \ldots). Tienen que escribir su \textbf{invariante de
+representación} como comentario en \texttt{tabla\_hash.h}. Cualquiera sea
+la representación, tiene que cumplir:
+
+\begin{invariante}{Lo que tiene que valer en cualquier representación}
+\begin{itemize}
+\item $c \geq 1$.
+\item El par de cada clave está en el bucket número
+  $h(clave) = \texttt{funcion\_hash}(clave) \bmod c$.
+\item Ninguna clave aparece más de una vez.
+\item $n \leq \texttt{FACTOR\_DE\_CARGA\_MAXIMO} \cdot c$ (es el $\alpha_{max}$ de la teórica).
+\end{itemize}
+\end{invariante}
+
+El último punto es el que garantiza los costos: como el \textbf{factor
+de carga} $\alpha = n / c$ está acotado por una constante, cada bucket
+tiene $O(1)$ pares en promedio. Para mantenerlo, cuando una inserción lo
+rompería hay que \textbf{redimensionar}: pasar a un arreglo de buckets
+más grande (por ejemplo, del doble de capacidad) y reubicar todos los
+pares (¡el bucket de cada clave cambia, porque cambia $c$!). No se pide
+achicar la tabla al eliminar.
+
+En el esqueleto, $\texttt{FACTOR\_DE\_CARGA\_MAXIMO} = 2$.
+
+\subsection{Función de hash}
+
+La tabla llama a \cppinline{funcion_hash(clave)}, que devuelve un
+\cppinline{size_t}. Hay que implementar dos versiones (sobrecarga): una
+para \cppinline{std::string}, en $O(m)$ con $m$ la longitud del string, y
+otra para \cppinline{int}, en $O(1)$. Lo único obligatorio es que dos
+claves iguales tengan siempre el mismo hash: \textbf{cuál} función usar
+es parte del trabajo.
+
+\subsection{Exploración: ¿qué función de hash conviene?}
+
+No hay una única respuesta, así que hay que \textbf{probar}. El
+programa \texttt{explorar\_hash.cpp} carga en una \texttt{TablaHash}
+los jugadores del archivo de datos del grupo y muestra la cantidad de
+claves, la capacidad final y las colisiones.
+
+\begin{enumerate}
+\item Proponer \textbf{al menos tres} funciones de hash distintas para
+  strings (alguna deliberadamente mala, por ejemplo una que sólo mire el
+  largo o la primera letra).
+\item Para cada una, medir las colisiones sobre el archivo del grupo,
+  con al menos dos capacidades iniciales distintas.
+\item Volcar los resultados en una tabla y explicar en pocas líneas qué
+  función eligieron y por qué. ¿Qué tienen en común las claves que
+  colisionan con las funciones malas? ¿Cambia algo si la capacidad es
+  potencia de 2?
+\end{enumerate}
+
+Como referencia: si la función repartiera las claves de manera
+perfectamente uniforme, con $n$ claves y $c$ buckets se esperan
+aproximadamente $n - c\,(1 - (1 - 1/c)^n)$ colisiones.
+
+% =======================================================================
+\section{TAD Diccionario}
+% =======================================================================
+
+La misma interfaz de la teórica, más la cantidad de claves. A
+diferencia de la tabla, acá $\proc{Insertar}$ \textbf{no tiene
+precondición}: si la clave ya estaba, reemplaza su valor.
+
+\subsection{Interfaz}
+
+\begin{itemize}
+\item $\OP{DiccionarioVacio}{Diccionario}()$: crea un diccionario vacío. \hfill $O(1)$ \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve el diccionario vacío.}
+\item $\OP{Insertar}{Diccionario}(D, clave, valor)$ \hfill $O(1)$ amortizado en promedio, $O(n)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} $D$ tiene $clave \to valor$ (reemplazando el valor anterior, si $clave$ ya estaba).}
+\item $\OP{Pertenece}{Diccionario}(D, clave)$: ¿está $clave$? \hfill $O(1)$ en promedio, $O(n)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve si $clave$ tiene un valor asociado en $D$.}
+\item $\OP{Obtener}{Diccionario}(D, clave)$: el valor asociado a $clave$. \hfill $O(1)$ en promedio, $O(n)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} $\OP{Pertenece}{Diccionario}(D, clave)$. \quad \textbf{Post:} devuelve el valor asociado a $clave$.}
+\item $\OP{Eliminar}{Diccionario}(D, clave)$: quita $clave$ (y su valor). \hfill $O(1)$ en promedio, $O(n)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} $\OP{Pertenece}{Diccionario}(D, clave)$. \quad \textbf{Post:} $D$ ya no tiene a $clave$.}
+\item $\OP{Cantidad}{Diccionario}(D)$: cantidad de claves. \hfill $O(1)$ \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve $n$.}
+\item $\OP{CrearIterador}{Diccionario}(D)$: crea un iterador sobre las asociaciones de $D$. \hfill $O(c)$ en peor caso \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve un iterador a la primera asociación de $D$ (ver sección~\ref{sec:iterador}).}
+\end{itemize}
+
+En $\OP{CrearIterador}{Diccionario}$, $c$ es la capacidad de la tabla de
+hash subyacente. Las operaciones del iterador del diccionario tienen los
+mismos costos que las del iterador de la tabla.
+
+En C++: \cppinline{bool pertenece(const K& clave)} y
+\cppinline{V obtener(const K& clave)}.
+
+\subsection{Representación interna (e invariante)}
+
+\begin{invariante}{Invariante de representación}
+$D.tabla$ es una \texttt{TablaHash} (que cumple su propio invariante)
+cuyos pares $\langle clave, valor \rangle$ son exactamente las
+asociaciones de $D$.
+\end{invariante}
+
+El diccionario \textbf{sólo} puede usar la interfaz pública de
+\texttt{TablaHash}: no conoce los buckets. Presten atención a que cada
+llamada a la tabla cumpla su precondición.
+
+Lo mismo vale para su iterador, que se representa con un iterador de la
+tabla:
+
+\begin{invariante}{Invariante de representación del iterador}
+$it.de\_la\_tabla$ es un iterador de $D.tabla$, y su par actual es la
+asociación actual de $it$.
+\end{invariante}
+
+% =======================================================================
+\section{TAD Goleadores}
+% =======================================================================
+
+La tabla de goleadores de un torneo: para cada jugador que convirtió,
+cuántos goles lleva. No es genérico.
+
+\subsection{Interfaz}
+
+Con $n$ la cantidad de jugadores distintos y $m$ la longitud del nombre
+del jugador (acá las claves son strings, así que $T_h \in O(m)$ y
+comparar dos claves también cuesta $O(m)$):
+
+\begin{itemize}
+\item $\OP{SinGoles}{Goleadores}()$: crea una tabla de goleadores vacía. \hfill $O(1)$ \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} ningún jugador tiene goles.}
+\item $\OP{AnotarGol}{Goleadores}(G, jugador)$: le suma un gol a $jugador$. \hfill $O(m)$ amortizado en promedio \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} $jugador$ tiene un gol más que antes (si no tenía ninguno, pasa a tener $1$).}
+\item $\OP{Goles}{Goleadores}(G, jugador)$: cuántos goles lleva $jugador$. \hfill $O(m)$ en promedio \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve los goles de $jugador$ ($0$ si no anotó ninguno). No modifica $G$.}
+\item $\OP{CantidadDeJugadores}{Goleadores}(G)$: cuántos jugadores anotaron. \hfill $O(1)$ \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} devuelve la cantidad de jugadores con al menos un gol.}
+\item $\OP{MaximoGoleador}{Goleadores}(G)$: quién hizo más goles. \hfill $O(m)$ en peor caso (no depende de $n$) \\
+  {\footnotesize \textbf{Pre:} $\OP{CantidadDeJugadores}{Goleadores}(G) > 0$. \quad \textbf{Post:} devuelve el jugador con más goles; si hay varios empatados, el que llegó primero a esa cantidad.}
+\item \textbf{(Optativo)} $\OP{ImprimirPorNombre}{Goleadores}(G)$ \hfill $O(n \log n)$ comparaciones, en peor caso \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} imprime una línea ``\texttt{jugador: goles}'' por jugador, en orden alfabético.}
+\item \textbf{(Optativo)} $\OP{ImprimirPorGoles}{Goleadores}(G)$ \hfill $O(n \log n)$ comparaciones, en peor caso \\
+  {\footnotesize \textbf{Pre:} --- \quad \textbf{Post:} imprime una línea ``\texttt{jugador: goles}'' por jugador, de más a menos goles; a igual cantidad de goles, en orden alfabético.}
+\end{itemize}
+
+El orden alfabético es el del operador \cppinline{<} entre
+\cppinline{std::string}. Los nombres de los archivos de datos no
+tienen tildes ni eñes.
+
+\subsection{Representación interna (e invariante)}
+
+$G = \langle G.goles\_por\_jugador,\; G.maximo \rangle$, donde
+$G.maximo$ es \textbf{únicamente un string} (no se guardan aparte sus
+goles).
+
+\begin{invariante}{Invariante de representación}
+\begin{itemize}
+\item $G.goles\_por\_jugador$ es un \texttt{Diccionario<string, int>}
+  cuyas claves son exactamente los jugadores con al menos un gol, y el
+  valor de cada uno es su cantidad de goles (siempre $\geq 1$).
+\item Si hay al menos un jugador, $G.maximo$ es el nombre de un jugador
+  con la mayor cantidad de goles.
+\end{itemize}
+\end{invariante}
+
+Igual que con $C.maximo$ en el Conjunto sobre ABB, el máximo no se
+recalcula: \textbf{cada operación} que modifica $G$ tiene que dejarlo
+consistente con el diccionario.
+
+Para la parte optativa: una tabla de hash \textbf{no guarda las claves
+en ningún orden útil}, así que para imprimir los listados hay que volcar
+el contenido del diccionario a un arreglo (recorriéndolo con su
+iterador) y \textbf{ordenarlo}, con un algoritmo de ordenamiento
+implementado por ustedes.
+
+% =======================================================================
+\section{El programa}
+% =======================================================================
+
+Cada grupo recibe un archivo de texto con los goles de un Mundial: una
+línea por gol, con el nombre del jugador que lo hizo. El programa
+(\texttt{main.cpp}) lee esa lista de la \textbf{entrada estándar}; la
+lectura ya está resuelta en el esqueleto, hasta dejar cada nombre en una
+variable. Falta crear el \texttt{Goleadores}, cargarle los goles e
+imprimir el resumen.
+
+Por ejemplo, para la final de 2022 (\texttt{datos/ejemplo.txt}):
+
+\begin{minipage}[t]{0.3\textwidth}
+\textbf{Entrada}
+\begin{verbatim}
+Messi
+Di Maria
+Mbappe
+Mbappe
+Messi
+Mbappe
+\end{verbatim}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.62\textwidth}
+\textbf{Salida}
+\begin{verbatim}
+Jugadores con goles: 3
+Maximo goleador: Mbappe (3 goles)
+\end{verbatim}
+\textbf{Salida adicional de la parte optativa}
+\begin{verbatim}
+
+Goleadores por nombre:
+Di Maria: 1
+Mbappe: 3
+Messi: 2
+
+Goleadores por goles:
+Mbappe: 3
+Messi: 2
+Di Maria: 1
+\end{verbatim}
+\end{minipage}
+
+La salida tiene que respetar \textbf{exactamente} ese formato. Se
+corre así:
+
+\begin{verbatim}
+./goleadores < datos/ejemplo.txt
+\end{verbatim}
+
+% =======================================================================
+\section{Archivos y reglas}
+% =======================================================================
+
+\begin{center}
+\begin{tabular}{@{}ll@{}}
+\toprule
+Archivo & Qué hay que hacer \\
+\midrule
+\texttt{funcion\_hash.h} / \texttt{.cpp} & Implementar las dos funciones de hash. \\
+\texttt{tabla\_hash.h} & Elegir la representación e implementar \texttt{TablaHash<K, V>} y su iterador. \\
+\texttt{diccionario.h} & Implementar las operaciones de \texttt{Diccionario<K, V>} y de su iterador. \\
+\texttt{goleadores.h} / \texttt{.cpp} & Implementar las operaciones de \texttt{Goleadores}. \\
+\texttt{main.cpp} & Completar el programa (la lectura ya está). \\
+\texttt{explorar\_hash.cpp} & Completar el programa de exploración (la lectura ya está). \\
+\texttt{tests.cpp} & Pruebas de la parte obligatoria. Agreguen las suyas. \\
+\texttt{Makefile} & \texttt{make}, \texttt{make test}, \texttt{make ejemplo}, \texttt{make valgrind}; \\
+ & \texttt{make ejemplo-optativo} (los listados de la parte optativa). \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\texttt{TablaHash} y \texttt{Diccionario} son clases template, como la
+lista enlazada del laboratorio: su implementación va en el mismo
+\texttt{.h}. Las operaciones de cada \texttt{Iterador} se completan
+directamente dentro de la clase anidada. Lo único que se puede hacer con
+una clave es copiarla, compararla con \cppinline{==} y pasársela a
+\cppinline{funcion_hash}; con un valor, copiarlo.
+
+\begin{regla}{Reglas}
+\begin{itemize}
+\item \textbf{No se puede cambiar la interfaz pública} de ninguna de las
+  clases. La parte privada de \texttt{TablaHash} y de su iterador es
+  libre; la de \texttt{Diccionario}, su iterador y \texttt{Goleadores}
+  es la de este enunciado
+  (se pueden agregar funciones auxiliares privadas).
+\item De la biblioteca estándar sólo se puede usar
+  \texttt{<string>}, \texttt{<iostream>}, \texttt{<cstddef>} y
+  \texttt{<vector>}. En particular, \textbf{no} se puede usar
+  \texttt{std::map}, \texttt{std::unordered\_map}, \texttt{std::hash} ni
+  \texttt{std::sort}.
+\item Cada TAD usa sólo la interfaz pública del de abajo.
+\item El programa no puede perder memoria ni acceder a memoria
+  inválida (\texttt{make valgrind} tiene que terminar sin errores).
+\item Tienen que cumplirse las complejidades de este enunciado.
+\end{itemize}
+\end{regla}
+
+% =======================================================================
+\section{Entrega}
+% =======================================================================
+
+Se entrega por el campus, hasta el 5 de noviembre a las 23:59, un único
+archivo comprimido por grupo con:
+
+\begin{itemize}
+\item Todos los archivos del esqueleto, completos.
+\item El archivo de datos que le tocó al grupo, como
+  \texttt{datos/goles.txt}.
+\item La salida del programa para ese archivo, como
+  \texttt{datos/salida.txt}
+  (\texttt{./goleadores < datos/goles.txt > datos/salida.txt}).
+\item La exploración de funciones de hash, como
+  \texttt{exploracion.txt}: la tabla de resultados y la explicación.
+\end{itemize}
+
+Para aprobar, el trabajo tiene que compilar sin errores, pasar las
+pruebas de la cátedra (que incluyen a las de \texttt{tests.cpp}), no
+tener errores de memoria, respetar las reglas de la sección anterior e
+incluir la exploración.
+
+\end{document}
