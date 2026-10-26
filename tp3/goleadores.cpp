@@ -3,11 +3,23 @@
 #include <iostream>
 
 Goleadores::Goleadores() {
-    // COMPLETAR (si hace falta)
+    // goles_por_jugador arranca vacio solo (constructor de Diccionario)
+    // maximo arranca como string vacio: no se consulta mientras no haya. 
+    //  jugadores (Pre de maximo_goleador)
 }
 
 void Goleadores::anotar_gol(const std::string& jugador) {
-    // COMPLETAR
+    int goles_nuevos = goles(jugador)+1;
+    goles_por_jugador.insertar(jugador, goles_nuevos);
+    //Mantener el invariante de maximo
+    if (goles_por_jugador.cantidad() ==1) {
+        //Hay un solo jugador con goles; es el maximo. 
+        maximo = jugador;
+    } else if (goles_nuevos > goles(maximo)) {
+        //Con > estricto, en un empate maximo no cambia: queda el que llego
+        // primero a esa cantidad.
+        maximo = jugador;
+    }
 }
 
 int Goleadores::goles(const std::string& jugador) {
@@ -16,13 +28,14 @@ int Goleadores::goles(const std::string& jugador) {
 }
 
 size_t Goleadores::cantidad_de_jugadores() {
-    // COMPLETAR
+    if (goles_por_jugador.pertenece(jugador)){
+        return goles_por_jugador.obtener(jugador);
+    }
     return 0;
 }
 
 std::string Goleadores::maximo_goleador() {
-    // COMPLETAR
-    return "";
+    return goles_por_jugador.cantidad();
 }
 
 void Goleadores::imprimir_por_nombre() {
