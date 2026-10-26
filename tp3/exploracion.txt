@@ -1,0 +1,2 @@
+EXPLORACION DE FUNCIONES DE HASH - MUndial 1970 
+Probamos tres funciones de hash para strings
