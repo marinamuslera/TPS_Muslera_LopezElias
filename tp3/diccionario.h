@@ -145,7 +145,7 @@ size_t Diccionario<K, V>::cantidad() {
 template <typename K, typename V>
 typename Diccionario<K, V>::Iterador Diccionario<K, V>::crear_iterador() {
     Iterador it;
-    it.de_la_tabla = tabla.crear_iterador()
+    it.de_la_tabla = tabla.crear_iterador();
     return it;
 }
 
