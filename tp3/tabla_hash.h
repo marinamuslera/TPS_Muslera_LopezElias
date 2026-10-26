@@ -186,7 +186,7 @@ void TablaHash<K, V>::redimensionar() {
 template <typename K, typename V>
 void TablaHash<K, V>::eliminar(const K& clave) {
     size_t indice = funcion_hash(clave)%capacidad();
-    size_t posicion_a_eliminar;
+    size_t posicion_a_eliminar = 0;
     for (size_t i=0; i<buckets[indice].size(); i++) { // recorro todos los pares dentro del bucket
         if (buckets[indice][i].first == clave) {
             posicion_a_eliminar = i;
