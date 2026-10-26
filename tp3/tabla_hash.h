@@ -17,8 +17,12 @@
 //   - V: se puede copiar.
 //
 // Invariante de representacion:
-//   TODO COMPLETAR: escriban aca el invariante de la representacion que elijan.
-//
+//   - capacidad() = buckets.size() y buckets.size() >= 1
+//   - Para cada par (clave,valor) guardado: el par esta en buckets[funcion_hash[clave] % buckets.size].
+//   - Ninguna clave aparece mas de una vez (ni en el mismo bucket, ni en buckets distintos).
+//   - cantidad_actual es la suma de los tamaños de todos los buckets.
+//   - cantidad_actual <= FACTOR_DE_CARGA_MAXIMO * buckets.size().
+
 // Complejidades: n es la cantidad de claves guardadas y c la capacidad.
 // "Promedio" supone que la funcion de hash reparte las claves de manera
 // uniforme y que calcularla (y comparar dos claves) cuesta O(1).
@@ -82,7 +86,11 @@ class TablaHash {
     // Deja de ser valido si se inserta o se elimina en la tabla.
     //
     // Invariante de representacion:
-    //  TODO COMPLETAR: escriban aca el invariante de la representacion que elijan.
+    //  - tabla apunta a la Tabla de Hash que se recorre. 
+    //  - 0 <= bucket_actual <= tabla->capacidad()
+    //  - Si bucket_actual < tabla->capacidad(), entonces posicion_actual < tabla->buckets[bucket_actual].size(): el iterador esta parado sobre un par real (nunca sobre un bucket vacio)
+    //  - Si bucket_actual == tabla->capacidad(), el iterador esta al final. 
+    //  - Todos los pares de buckets anteriores a bucket_actual, y los de posiciones anteriores a posicion_actual en ese bucket, ya fueron recorridos. 
     class Iterador {
       private:
         TablaHash *tabla; // puntero a la tabla hash
@@ -166,8 +174,8 @@ template <typename K, typename V>
 void TablaHash<K, V>::redimensionar() {
     size_t nueva_capacidad = capacidad()*2;
     std::vector<std::vector<std::pair<K, V>>> buckets_nuevos = std::vector<std::vector<std::pair<K, V>>>(nueva_capacidad); //SI tengo que declarar buckets_nuevos porque es la primera vez que aparece
-    for (std::vector<std::pair<K, V>> bucket: buckets) { //para cada bucket
-        for (std::pair<K, V> elemento : bucket) { //para cada tupla del bucket
+    for (std::vector<std::pair<K, V>>& bucket: buckets) { //para cada bucket
+        for (std::pair<K, V>& elemento : bucket) { //para cada tupla del bucket
             size_t indice = funcion_hash(elemento.first)%nueva_capacidad; // .first es el primer elemento del par
             (buckets_nuevos[indice]).push_back(elemento);
         }
@@ -213,7 +221,7 @@ size_t TablaHash<K, V>::capacidad() {
 template <typename K, typename V>
 size_t TablaHash<K, V>::colisiones() {
     size_t buckets_no_vacios = 0; //
-    for (std::vector<std::pair<K, V>> bucket: buckets) {
+    for (std::vector<std::pair<K, V>>& bucket: buckets) {
         if (bucket.size() != 0) {
             buckets_no_vacios++;
         }
