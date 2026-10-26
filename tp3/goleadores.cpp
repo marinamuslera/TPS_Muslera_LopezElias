@@ -23,19 +23,18 @@ void Goleadores::anotar_gol(const std::string& jugador) {
 }
 
 int Goleadores::goles(const std::string& jugador) {
-    // COMPLETAR
-    return 0;
-}
-
-size_t Goleadores::cantidad_de_jugadores() {
     if (goles_por_jugador.pertenece(jugador)){
         return goles_por_jugador.obtener(jugador);
     }
     return 0;
 }
 
-std::string Goleadores::maximo_goleador() {
+size_t Goleadores::cantidad_de_jugadores() {
     return goles_por_jugador.cantidad();
+}
+
+std::string Goleadores::maximo_goleador() {
+    return maximo;
 }
 
 void Goleadores::imprimir_por_nombre() {
