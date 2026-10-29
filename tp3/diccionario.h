@@ -127,7 +127,7 @@ bool Diccionario<K, V>::pertenece(const K& clave) {
 
 template <typename K, typename V>
 V Diccionario<K, V>::obtener(const K& clave) {
-    return *tabla.buscar(clave);
+    return *tabla.buscar(clave); //* desreferencia: buscar() encuentra la dirección de memoria, * accede al valor en esa dirección
 }
 
 template <typename K, typename V>

@@ -9,9 +9,10 @@ Goleadores::Goleadores() {
 }
 
 void Goleadores::anotar_gol(const std::string& jugador) {
+    // la función goles() chequea si el jugador ya pertenece, así se evitan errores si el jugador no pertenece (en ese caso, devuelve 0)
     int goles_nuevos = goles(jugador)+1;
-    goles_por_jugador.insertar(jugador, goles_nuevos);
-    //Mantener el invariante de maximo
+    goles_por_jugador.insertar(jugador, goles_nuevos); // puedo insertar y no va a aparecer un mismo jugador dos veces pues la función insertar de Diccionario lo permite (la de Tabla Hash no)
+    //Para mantener el invariante de maximo:
     if (goles_por_jugador.cantidad() ==1) {
         //Hay un solo jugador con goles; es el maximo. 
         maximo = jugador;

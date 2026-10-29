@@ -14,8 +14,8 @@ int main() {
     // COMPLETAR: crear la estructura donde se van a cargar los goles.
     Goleadores goleadores;
     std::string jugador;
-    while (std::getline(std::cin, jugador)) {
-        if (jugador != "") {
+    while (std::getline(std::cin, jugador)) { // lee una linea y devuelve true si había algo para leer (aunque sea una línea vacía), false si no (por eso sirve para un while)
+        if (jugador != "") { // puede ser que se haya leido una linea que era vacía, por eso la condición
             // En este punto, jugador tiene el nombre de quien hizo el gol.
             goleadores.anotar_gol(jugador);
         }

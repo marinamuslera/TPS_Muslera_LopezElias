@@ -1,0 +1,55 @@
+Funcion               Capacidad inicial   Capacidad final   Colisiones
+Buena (hash*31)       8                   32                26
+Buena (hash*31)       50                  50                20
+Mala (largo)          8                   32                38 
+Mala (largo)          50                  50                38
+Mala (1ra letra)      8
+Mala (1ra letra)      50
+
+Funciones de hash propuestas:
+
+1) Buena (la usada en la entrega):
+size_t funcion_hash(const std::string& clave) {
+    size_t hash = 0;
+    for (char c : clave) {
+        hash = hash * 31 + (unsigned char)c;
+    }
+    return hash;
+}
+Usa todos los caracteres del nombre, por eso distribuye bien.
+
+2) Mala, por longitud:
+size_t funcion_hash(const std::string& clave) {
+    return clave.size();
+}
+Es mala a propósito: todos los nombres que tengan la misma cantidad de letras van a colisionar siempre, sin importar la capacidad de la tabla.
+
+3) Mala, por primera letra:
+size_t funcion_hash(const std::string& clave) {
+    return (unsigned char)clave[0];
+}
+También es mala a propósito: ignora todo el nombre excepto la primera letra, entonces todos los jugadores que empiecen con la misma letra colisionan.
+
+Capacidades elegidas:
+Elegimos probar con capacidad inicial 8 (potencia de 2) y 50 (no es potencia de 2, y es cercana a la cantidad real de jugadores distintos), 
+para poder comparar tanto el efecto de agrandar la tabla como el de que la capacidad sea o no una potencia de 2.
+
+Resultados:
+Función               Capacidad inicial   Capacidad final   Colisiones
+Buena (hash*31)       8                   32                26
+Buena (hash*31)       50                  50                20
+Mala (largo)          8                   32                38 
+Mala (largo)          50                  50                38
+Mala (1ra letra)      8                   32                35
+Mala (1ra letra)      50                  50                35
+
+Conclusión:
+La función buena (hash*31) tuvo menos colisiones que las dos funciones malas en ambas capacidades probadas, lo que confirma que es una mejor
+elección. Por otro lado, con la función buena, aumentar la capacidad inicial de la tabla hizo que bajen las colisiones (porque las funciones
+ya distribuyen bien los valores y más buckets ayudan a separarlos mejor).
+En cambio, con las funciones malas, las colisiones fueron las mismas sin importar la capacidad inicial. Esto pasa porque las funciones generan
+muy pocos valores del hash distintos (por ejemplo, todos los nombres de 5 letras dan el mismo hash), entonces esos nombres siempre terminan
+colisionando, sin importar cuantos buckets tenga la tabla. Agrandar la capacidad no soluciona el problema, ya que el mismo viene de la función
+en sí. 
+Respecto a la pregunta de si importa que la capacidad sea potencia de 2, no pudimos observar que fuera un factor decisivo por sí solo, sino que 
+lo que más influyó en la cantidad de colisiones fue la calidad de la función de hash, no si la capacidad era o no potencia de 2.
