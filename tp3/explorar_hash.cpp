@@ -18,7 +18,7 @@ int main() {
     std::string jugador;
     while (std::getline(std::cin, jugador)) {
         if (jugador != "") {
-            if (tabla.buscar(jugador) == nullptr){
+            if (tabla.buscar(jugador) == nullptr){ // para no insertar al mismo jugador dos veces
                 tabla.insertar(jugador,0); //el valor no importa
             }
         }

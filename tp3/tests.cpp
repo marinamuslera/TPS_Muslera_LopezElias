@@ -333,6 +333,31 @@ void pruebas_goleadores() {
               "con un solo gol, el maximo goleador es quien lo hizo");
 }
 
+// PRUEBAS PROPIAS: pruebas_goleadores() solo usa 2 jugadores para chequear que el máximo cambia. La idea es probar con 3 jugadores
+// que se van superando entre sí, para ver que la lógica de "máximo" efectivamente funcione. 
+void pruebas_propias() {
+    std::cout << "Pruebas propias" << std::endl;
+    Goleadores goleadores;
+
+    goleadores.anotar_gol("Jugador A");
+    verificar(goleadores.maximo_goleador() == "Jugador A", "con un solo jugador, ese es el maximo");
+ 
+    goleadores.anotar_gol("Jugador B"); // B llega a 1 gol, el mismo numero que A (máximo debería seguir siendo A).
+    verificar(goleadores.maximo_goleador() == "Jugador A", "un segundo jugador con la misma cantidad de goles no modifica al maximo");
+
+    goleadores.anotar_gol("Jugador B"); // B anota 2 veces mas (llega a 3 goles) y supera a A (que tiene 1): B es el nuevo máximo
+    goleadores.anotar_gol("Jugador B");
+    verificar(goleadores.maximo_goleador() == "Jugador B", "un jugador que supera al maximo pasa a ser el nuevo maximo");
+
+    goleadores.anotar_gol("Jugador C"); // C anota 4 veces (llega a 4 goles), y supera a B (que tiene 3): C es el nuevo máximo
+    goleadores.anotar_gol("Jugador C");
+    goleadores.anotar_gol("Jugador C");
+    goleadores.anotar_gol("Jugador C");
+    verificar(goleadores.maximo_goleador() == "Jugador C", "un tercer jugador tambien puede modificar al maximo");
+    verificar(goleadores.cantidad_de_jugadores() == 3, "cantidad_de_jugadores cuenta personas distintas, no el total de goles");
+
+}
+
 int main() {
     pruebas_funcion_hash();
     pruebas_tabla_hash();
@@ -342,6 +367,7 @@ int main() {
     pruebas_diccionario();
     pruebas_iterador_diccionario();
     pruebas_goleadores();
+    pruebas_propias();
 
     std::cout << std::endl;
     if (pruebas_fallidas == 0) {
@@ -351,3 +377,4 @@ int main() {
     std::cout << "Fallaron " << pruebas_fallidas << " pruebas." << std::endl;
     return 1;
 }
+

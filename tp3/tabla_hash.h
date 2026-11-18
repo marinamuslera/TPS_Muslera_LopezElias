@@ -193,7 +193,7 @@ void TablaHash<K, V>::eliminar(const K& clave) {
             break;
         }
     }
-    buckets[indice].erase(buckets[indice].begin()+posicion_a_eliminar); //PREGUNTAR (lo de erase); begin()+p= desde el principio, posición p; erase() necesita la posición de p, y buckets[indice][p] te da el contenido 
+    buckets[indice].erase(buckets[indice].begin()+posicion_a_eliminar); // begin()+p= desde el principio, posición p; erase() necesita la posición de p, y buckets[indice][p] te da el contenido 
     cantidad_actual--;
 }
 
