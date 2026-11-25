@@ -1,0 +1,1308 @@
+ciudad1,ciudad2,distancia_km
+Buenos Aires,La Plata,64
+Buenos Aires,Quilmes,21
+Buenos Aires,Tigre,32
+Buenos Aires,Morón,27
+Buenos Aires,Ezeiza,37
+Buenos Aires,Zárate,98
+Buenos Aires,Campana,87
+Buenos Aires,Luján,79
+Buenos Aires,Lobos,110
+Buenos Aires,Chascomús,137
+La Plata,Quilmes,42
+La Plata,Tigre,95
+La Plata,Morón,82
+La Plata,Ezeiza,63
+La Plata,Luján,134
+La Plata,Lobos,130
+La Plata,Chascomús,88
+La Plata,Dolores,188
+La Plata,San Clemente del Tuyú,234
+Quilmes,Tigre,53
+Quilmes,Morón,42
+Quilmes,Ezeiza,34
+Quilmes,Campana,108
+Quilmes,Luján,95
+Quilmes,Lobos,111
+Quilmes,Chascomús,118
+Tigre,Morón,30
+Tigre,Ezeiza,56
+Tigre,Zárate,66
+Tigre,Campana,55
+Tigre,Luján,60
+Tigre,Mercedes (Buenos Aires),98
+Morón,Ezeiza,29
+Morón,Zárate,86
+Morón,Campana,75
+Morón,Luján,54
+Morón,Mercedes (Buenos Aires),89
+Morón,Lobos,88
+Morón,Chascomús,141
+Ezeiza,Zárate,115
+Ezeiza,Campana,104
+Ezeiza,Luján,74
+Ezeiza,Mercedes (Buenos Aires),103
+Ezeiza,Lobos,77
+Ezeiza,Las Flores,167
+Ezeiza,Chascomús,112
+Mar del Plata,Tandil,190
+Mar del Plata,Dolores,226
+Mar del Plata,San Clemente del Tuyú,236
+Mar del Plata,Pinamar,139
+Mar del Plata,Villa Gesell,116
+Mar del Plata,Ayacucho,151
+Mar del Plata,Balcarce,77
+Mar del Plata,Miramar,47
+Mar del Plata,Necochea,145
+Bahía Blanca,Punta Alta,30
+Bahía Blanca,Tres Arroyos,213
+Bahía Blanca,Coronel Pringles,137
+Bahía Blanca,Coronel Suárez,173
+Bahía Blanca,Pigüé,149
+Bahía Blanca,Darregueira,166
+Bahía Blanca,Médanos,46
+Bahía Blanca,Carmen de Patagones,287
+Bahía Blanca,Guatraché,193
+Bahía Blanca,Viedma,289
+Bahía Blanca,Río Colorado,194
+Punta Alta,Tres Arroyos,199
+Punta Alta,Coronel Pringles,141
+Punta Alta,Coronel Suárez,191
+Punta Alta,Pigüé,173
+Punta Alta,Darregueira,196
+Punta Alta,Médanos,65
+Punta Alta,Carmen de Patagones,273
+Punta Alta,Viedma,275
+Punta Alta,Río Colorado,211
+Tandil,Olavarría,139
+Tandil,Azul,106
+Tandil,Las Flores,175
+Tandil,Dolores,205
+Tandil,Villa Gesell,229
+Tandil,Ayacucho,72
+Tandil,Balcarce,116
+Tandil,Miramar,186
+Tandil,Necochea,169
+Tandil,Tres Arroyos,185
+Olavarría,Azul,51
+Olavarría,Bolívar,122
+Olavarría,Saladillo,177
+Olavarría,Las Flores,176
+Olavarría,Tres Arroyos,198
+Olavarría,Coronel Pringles,182
+Olavarría,Coronel Suárez,187
+Azul,Nueve de Julio,210
+Azul,Bolívar,153
+Azul,Saladillo,152
+Azul,Las Flores,131
+Azul,Ayacucho,154
+Azul,Necochea,264
+Azul,Tres Arroyos,217
+Junín,Pergamino,102
+Junín,Chivilcoy,110
+Junín,Bragado,87
+Junín,Nueve de Julio,114
+Junín,Pehuajó,193
+Junín,Lincoln,74
+Junín,Chacabuco,53
+Junín,Rojas,57
+Junín,Colón (Buenos Aires),94
+Pergamino,San Nicolás de los Arroyos,84
+Pergamino,San Pedro,104
+Pergamino,Chacabuco,101
+Pergamino,Rojas,45
+Pergamino,Colón (Buenos Aires),59
+Pergamino,Venado Tuerto,156
+Pergamino,Villa Constitución,92
+Pergamino,Firmat,117
+San Nicolás de los Arroyos,San Pedro,77
+San Nicolás de los Arroyos,Rojas,129
+San Nicolás de los Arroyos,Rosario,70
+San Nicolás de los Arroyos,Villa Constitución,18
+San Nicolás de los Arroyos,Casilda,113
+San Nicolás de los Arroyos,San Lorenzo,96
+San Nicolás de los Arroyos,Victoria,95
+San Nicolás de los Arroyos,Gualeguay,105
+San Pedro,Zárate,90
+San Pedro,Campana,101
+San Pedro,Luján,134
+San Pedro,Mercedes (Buenos Aires),132
+San Pedro,Villa Constitución,95
+San Pedro,Gualeguaychú,156
+San Pedro,Gualeguay,82
+Zárate,Campana,11
+Zárate,Luján,63
+Zárate,Mercedes (Buenos Aires),86
+Zárate,Gualeguaychú,156
+Zárate,Gualeguay,132
+Campana,Luján,57
+Campana,Mercedes (Buenos Aires),83
+Campana,Gualeguaychú,161
+Campana,Gualeguay,142
+Luján,Mercedes (Buenos Aires),38
+Luján,Chivilcoy,110
+Luján,Lobos,81
+Mercedes (Buenos Aires),Chivilcoy,73
+Mercedes (Buenos Aires),Bragado,132
+Mercedes (Buenos Aires),Chacabuco,114
+Mercedes (Buenos Aires),Lobos,79
+Mercedes (Buenos Aires),Saladillo,138
+Chivilcoy,Bragado,59
+Chivilcoy,Nueve de Julio,118
+Chivilcoy,Chacabuco,60
+Chivilcoy,Rojas,122
+Chivilcoy,Lobos,107
+Chivilcoy,Saladillo,102
+Bragado,Nueve de Julio,60
+Bragado,Pehuajó,179
+Bragado,Bolívar,163
+Bragado,Lincoln,118
+Bragado,Chacabuco,64
+Bragado,Rojas,126
+Bragado,Saladillo,104
+Nueve de Julio,Pehuajó,121
+Nueve de Julio,Bolívar,108
+Nueve de Julio,Lincoln,104
+Nueve de Julio,Chacabuco,116
+Nueve de Julio,Saladillo,122
+Trenque Lauquen,Pehuajó,92
+Trenque Lauquen,Bolívar,178
+Trenque Lauquen,General Villegas,129
+Trenque Lauquen,Carhué,161
+Trenque Lauquen,Santa Rosa,189
+Trenque Lauquen,General Pico,119
+Trenque Lauquen,Eduardo Castex,170
+Trenque Lauquen,Macachín,186
+Pehuajó,Bolívar,102
+Pehuajó,Lincoln,132
+Pehuajó,General Villegas,159
+Pehuajó,General Pico,202
+Bolívar,Saladillo,164
+Bolívar,Coronel Suárez,185
+Lincoln,Chacabuco,120
+Lincoln,Rojas,125
+Lincoln,Colón (Buenos Aires),138
+Lincoln,General Villegas,163
+Lincoln,Rufino,153
+Chacabuco,Rojas,65
+Chacabuco,Colón (Buenos Aires),121
+Chacabuco,Saladillo,153
+Rojas,Colón (Buenos Aires),57
+Rojas,Venado Tuerto,150
+Colón (Buenos Aires),Venado Tuerto,98
+Colón (Buenos Aires),Villa Constitución,124
+Colón (Buenos Aires),Casilda,115
+Colón (Buenos Aires),Firmat,73
+Colón (Buenos Aires),Rufino,184
+General Villegas,Rufino,108
+General Villegas,Laboulaye,127
+General Villegas,Huinca Renancó,151
+General Villegas,General Pico,117
+General Villegas,Realicó,135
+General Villegas,Eduardo Castex,184
+Lobos,Saladillo,96
+Lobos,Las Flores,111
+Lobos,Chascomús,130
+Saladillo,Las Flores,89
+Las Flores,Chascomús,131
+Las Flores,Dolores,158
+Las Flores,Ayacucho,166
+Chascomús,Dolores,104
+Chascomús,San Clemente del Tuyú,174
+Chascomús,Pinamar,239
+Dolores,San Clemente del Tuyú,103
+Dolores,Pinamar,138
+Dolores,Villa Gesell,148
+Dolores,Ayacucho,142
+Dolores,Balcarce,215
+San Clemente del Tuyú,Pinamar,101
+San Clemente del Tuyú,Villa Gesell,123
+San Clemente del Tuyú,Ayacucho,217
+San Clemente del Tuyú,Balcarce,258
+Pinamar,Villa Gesell,23
+Pinamar,Ayacucho,173
+Pinamar,Balcarce,178
+Pinamar,Miramar,186
+Villa Gesell,Ayacucho,162
+Villa Gesell,Balcarce,158
+Villa Gesell,Miramar,163
+Villa Gesell,Necochea,254
+Ayacucho,Balcarce,97
+Ayacucho,Miramar,164
+Ayacucho,Necochea,189
+Balcarce,Miramar,71
+Balcarce,Necochea,106
+Miramar,Necochea,101
+Miramar,Tres Arroyos,256
+Necochea,Tres Arroyos,163
+Tres Arroyos,Coronel Pringles,125
+Tres Arroyos,Coronel Suárez,213
+Coronel Pringles,Coronel Suárez,93
+Coronel Pringles,Pigüé,120
+Coronel Pringles,Carhué,183
+Coronel Pringles,Médanos,179
+Coronel Suárez,Pigüé,54
+Coronel Suárez,Carhué,95
+Coronel Suárez,Darregueira,134
+Coronel Suárez,Médanos,201
+Coronel Suárez,Guatraché,173
+Pigüé,Carhué,69
+Pigüé,Darregueira,81
+Pigüé,Médanos,166
+Pigüé,Macachín,149
+Pigüé,Guatraché,121
+Carhué,Darregueira,80
+Carhué,Santa Rosa,180
+Carhué,General Acha,197
+Carhué,Macachín,97
+Carhué,Guatraché,105
+Darregueira,Médanos,160
+Darregueira,Santa Rosa,187
+Darregueira,General Acha,158
+Darregueira,Macachín,91
+Darregueira,Guatraché,40
+Darregueira,Río Colorado,199
+Médanos,Carmen de Patagones,265
+Médanos,Guatraché,179
+Médanos,Viedma,266
+Médanos,Río Colorado,148
+Carmen de Patagones,Viedma,2
+Carmen de Patagones,Río Colorado,267
+Carmen de Patagones,San Antonio Oeste,199
+Carmen de Patagones,Sierra Grande,262
+Carmen de Patagones,Puerto Madryn,333
+Rosario,Villa Constitución,52
+Rosario,Casilda,59
+Rosario,Cañada de Gómez,85
+Rosario,San Lorenzo,28
+Rosario,Firmat,116
+Rosario,Victoria,71
+Rosario,Diamante,117
+Rosario,Nogoyá,122
+Santa Fe,Rafaela,103
+Santa Fe,Esperanza,36
+Santa Fe,San Justo,113
+Santa Fe,Sunchales,135
+Santa Fe,Gálvez,80
+Santa Fe,Coronda,52
+Santa Fe,Paraná,23
+Santa Fe,La Paz (Entre Ríos),169
+Santa Fe,Diamante,59
+Rafaela,Esperanza,69
+Rafaela,San Justo,120
+Rafaela,Ceres,190
+Rafaela,Sunchales,42
+Rafaela,San Jorge,96
+Rafaela,Gálvez,109
+Rafaela,Coronda,116
+Rafaela,San Francisco,71
+Rafaela,Morteros,93
+Venado Tuerto,Casilda,130
+Venado Tuerto,Cañada de Gómez,140
+Venado Tuerto,Firmat,66
+Venado Tuerto,Rufino,106
+Venado Tuerto,Bell Ville,170
+Venado Tuerto,Marcos Juárez,141
+Venado Tuerto,Laboulaye,165
+Reconquista,Vera,77
+Reconquista,Tostado,247
+Reconquista,La Paz (Entre Ríos),212
+Reconquista,Goya,45
+Reconquista,Curuzú Cuatiá,205
+Reconquista,Mercedes (Corrientes),183
+Reconquista,Esquina,116
+Reconquista,Bella Vista,111
+Reconquista,Resistencia,239
+Esperanza,San Justo,96
+Esperanza,Sunchales,99
+Esperanza,San Jorge,121
+Esperanza,Gálvez,84
+Esperanza,Coronda,69
+Esperanza,San Francisco,131
+Esperanza,Morteros,157
+Esperanza,Paraná,59
+Esperanza,La Paz (Entre Ríos),174
+Esperanza,Diamante,89
+Villa Constitución,Casilda,97
+Villa Constitución,Cañada de Gómez,131
+Villa Constitución,San Lorenzo,78
+Villa Constitución,Victoria,84
+Villa Constitución,Gualeguay,115
+Villa Constitución,Nogoyá,127
+Casilda,Cañada de Gómez,38
+Casilda,San Lorenzo,63
+Casilda,Firmat,66
+Casilda,Marcos Juárez,114
+Cañada de Gómez,San Lorenzo,75
+Cañada de Gómez,Firmat,86
+Cañada de Gómez,San Jorge,134
+Cañada de Gómez,Gálvez,107
+Cañada de Gómez,Coronda,125
+Cañada de Gómez,Bell Ville,148
+Cañada de Gómez,Marcos Juárez,81
+San Lorenzo,Firmat,127
+San Lorenzo,Coronda,106
+San Lorenzo,Victoria,67
+San Lorenzo,Diamante,91
+San Lorenzo,Nogoyá,116
+Firmat,Rufino,172
+Firmat,Marcos Juárez,122
+Rufino,Laboulaye,77
+Rufino,Huinca Renancó,198
+Rufino,Realicó,199
+San Justo,Vera,183
+San Justo,Ceres,197
+San Justo,Tostado,249
+San Justo,Sunchales,113
+San Justo,Coronda,162
+San Justo,Morteros,162
+San Justo,Paraná,126
+San Justo,La Paz (Entre Ríos),108
+San Justo,Esquina,160
+Vera,Ceres,208
+Vera,Tostado,184
+Vera,La Paz (Entre Ríos),183
+Vera,Goya,119
+Vera,Esquina,108
+Vera,Bella Vista,186
+Ceres,Tostado,89
+Ceres,Sunchales,148
+Ceres,San Francisco,207
+Ceres,Morteros,111
+Ceres,Añatuya,216
+Tostado,Sunchales,229
+Tostado,Morteros,199
+Tostado,Añatuya,161
+Tostado,Quimilí,225
+Sunchales,San Jorge,133
+Sunchales,San Francisco,88
+Sunchales,Morteros,59
+San Jorge,Gálvez,74
+San Jorge,Coronda,107
+San Jorge,San Francisco,68
+San Jorge,Bell Ville,135
+San Jorge,Marcos Juárez,110
+San Jorge,Arroyito,150
+San Jorge,Morteros,160
+Gálvez,Coronda,35
+Gálvez,San Francisco,126
+Gálvez,Marcos Juárez,134
+Gálvez,Paraná,88
+Gálvez,Diamante,66
+Coronda,San Francisco,150
+Coronda,Paraná,55
+Coronda,Victoria,123
+Coronda,Diamante,34
+Córdoba,Villa Carlos Paz,36
+Córdoba,Alta Gracia,42
+Córdoba,Río Tercero,100
+Córdoba,Jesús María,59
+Córdoba,Cosquín,40
+Córdoba,La Falda,56
+Córdoba,Cruz del Eje,116
+Córdoba,Deán Funes,135
+Córdoba,Mina Clavero,102
+Córdoba,Villa General Belgrano,86
+Córdoba,Arroyito,129
+Córdoba,Oncativo,87
+Río Cuarto,Villa María,157
+Río Cuarto,Río Tercero,131
+Río Cuarto,Villa General Belgrano,155
+Río Cuarto,Laboulaye,171
+Río Cuarto,Villa Mercedes,144
+Río Cuarto,Merlo,129
+Río Cuarto,Justo Daract,134
+Río Cuarto,Santa Rosa del Conlara,143
+Río Cuarto,Naschel,118
+Villa María,Alta Gracia,169
+Villa María,Río Tercero,103
+Villa María,Bell Ville,68
+Villa María,Marcos Juárez,134
+Villa María,Villa General Belgrano,160
+Villa María,Arroyito,134
+Villa María,Oncativo,83
+San Francisco,Arroyito,110
+San Francisco,Morteros,97
+Villa Carlos Paz,Alta Gracia,32
+Villa Carlos Paz,Río Tercero,109
+Villa Carlos Paz,Jesús María,74
+Villa Carlos Paz,Cosquín,23
+Villa Carlos Paz,La Falda,44
+Villa Carlos Paz,Cruz del Eje,98
+Villa Carlos Paz,Deán Funes,135
+Villa Carlos Paz,Villa Dolores,105
+Villa Carlos Paz,Mina Clavero,70
+Villa Carlos Paz,Villa General Belgrano,75
+Villa Carlos Paz,Oncativo,114
+Alta Gracia,Río Tercero,78
+Alta Gracia,Jesús María,97
+Alta Gracia,Cosquín,54
+Alta Gracia,La Falda,75
+Alta Gracia,Cruz del Eje,130
+Alta Gracia,Deán Funes,164
+Alta Gracia,Villa Dolores,94
+Alta Gracia,Mina Clavero,67
+Alta Gracia,Villa General Belgrano,46
+Alta Gracia,Oncativo,92
+Alta Gracia,Merlo,113
+Alta Gracia,Santa Rosa del Conlara,128
+Río Tercero,Bell Ville,171
+Río Tercero,Mina Clavero,118
+Río Tercero,Villa General Belgrano,57
+Río Tercero,Arroyito,156
+Río Tercero,Oncativo,60
+Río Tercero,Merlo,104
+Río Tercero,Santa Rosa del Conlara,126
+Bell Ville,Marcos Juárez,67
+Bell Ville,Arroyito,167
+Bell Ville,Oncativo,147
+Jesús María,Cosquín,56
+Jesús María,La Falda,47
+Jesús María,Cruz del Eje,87
+Jesús María,Deán Funes,80
+Jesús María,Arroyito,133
+Jesús María,Oncativo,133
+Cosquín,La Falda,21
+Cosquín,Cruz del Eje,79
+Cosquín,Deán Funes,112
+Cosquín,Villa Dolores,123
+Cosquín,Mina Clavero,88
+Cosquín,Villa General Belgrano,98
+Cosquín,Oncativo,126
+La Falda,Cruz del Eje,60
+La Falda,Deán Funes,91
+La Falda,Mina Clavero,103
+La Falda,Chamical,230
+Cruz del Eje,Deán Funes,66
+Cruz del Eje,Mina Clavero,134
+Cruz del Eje,Recreo,196
+Cruz del Eje,Chamical,180
+Cruz del Eje,Chepes,222
+Deán Funes,Recreo,173
+Deán Funes,Chamical,226
+Villa Dolores,Mina Clavero,36
+Villa Dolores,Villa General Belgrano,72
+Villa Dolores,Chepes,178
+Villa Dolores,San Luis,223
+Villa Dolores,Merlo,57
+Villa Dolores,Quines,79
+Villa Dolores,Santa Rosa del Conlara,53
+Villa Dolores,Naschel,132
+Mina Clavero,Villa General Belgrano,62
+Mina Clavero,Chepes,187
+Mina Clavero,Merlo,83
+Mina Clavero,Quines,112
+Mina Clavero,Santa Rosa del Conlara,86
+Villa General Belgrano,Oncativo,100
+Villa General Belgrano,Merlo,70
+Villa General Belgrano,Quines,144
+Villa General Belgrano,Santa Rosa del Conlara,88
+Laboulaye,Huinca Renancó,144
+Laboulaye,Justo Daract,201
+Laboulaye,Buena Esperanza,222
+Laboulaye,General Pico,208
+Laboulaye,Realicó,154
+Huinca Renancó,Villa Mercedes,196
+Huinca Renancó,Justo Daract,158
+Huinca Renancó,Buena Esperanza,98
+Huinca Renancó,General Pico,128
+Huinca Renancó,Realicó,30
+Huinca Renancó,Eduardo Castex,144
+Huinca Renancó,Victorica,218
+Arroyito,Morteros,153
+Arroyito,Oncativo,97
+Paraná,Victoria,126
+Paraná,La Paz (Entre Ríos),166
+Paraná,Diamante,47
+Paraná,Nogoyá,121
+Concordia,Concepción del Uruguay,148
+Concordia,Colón (Entre Ríos),112
+Concordia,La Paz (Entre Ríos),206
+Concordia,Villaguay,131
+Concordia,Chajarí,85
+Concordia,Federal,105
+Concordia,Paso de los Libres,248
+Concordia,Curuzú Cuatiá,214
+Concordia,Monte Caseros,158
+Gualeguaychú,Concepción del Uruguay,77
+Gualeguaychú,Colón (Entre Ríos),114
+Gualeguaychú,Gualeguay,90
+Gualeguaychú,Villaguay,163
+Gualeguaychú,Nogoyá,165
+Concepción del Uruguay,Colón (Entre Ríos),36
+Concepción del Uruguay,Victoria,216
+Concepción del Uruguay,Gualeguay,149
+Concepción del Uruguay,Villaguay,121
+Concepción del Uruguay,Federal,213
+Concepción del Uruguay,Nogoyá,175
+Colón (Entre Ríos),Gualeguay,180
+Colón (Entre Ríos),Villaguay,111
+Colón (Entre Ríos),Chajarí,197
+Colón (Entre Ríos),Federal,184
+Colón (Entre Ríos),Nogoyá,187
+Victoria,Gualeguay,117
+Victoria,Villaguay,161
+Victoria,Diamante,92
+Victoria,Nogoyá,51
+Gualeguay,Nogoyá,114
+La Paz (Entre Ríos),Villaguay,167
+La Paz (Entre Ríos),Chajarí,190
+La Paz (Entre Ríos),Federal,104
+La Paz (Entre Ríos),Goya,218
+La Paz (Entre Ríos),Esquina,98
+Villaguay,Chajarí,191
+Villaguay,Federal,126
+Villaguay,Nogoyá,110
+Chajarí,Federal,94
+Chajarí,Paso de los Libres,173
+Chajarí,Curuzú Cuatiá,128
+Chajarí,Mercedes (Corrientes),210
+Chajarí,Monte Caseros,78
+Federal,Paso de los Libres,255
+Federal,Curuzú Cuatiá,176
+Federal,Esquina,152
+Federal,Monte Caseros,161
+Diamante,Nogoyá,105
+Corrientes,Ituzaingó,254
+Corrientes,Bella Vista,141
+Corrientes,Resistencia,18
+Corrientes,Presidencia Roque Sáenz Peña,212
+Corrientes,Villa Ángela,223
+Corrientes,General San Martín (Chaco),138
+Corrientes,Quitilipi,183
+Corrientes,Formosa,189
+Corrientes,Clorinda,320
+Corrientes,El Colorado,168
+Goya,Paso de los Libres,263
+Goya,Curuzú Cuatiá,165
+Goya,Mercedes (Corrientes),138
+Goya,Esquina,120
+Goya,Bella Vista,88
+Goya,Monte Caseros,239
+Goya,Resistencia,227
+Paso de los Libres,Curuzú Cuatiá,112
+Paso de los Libres,Mercedes (Corrientes),135
+Paso de los Libres,Santo Tomé,197
+Paso de los Libres,Monte Caseros,96
+Curuzú Cuatiá,Mercedes (Corrientes),81
+Curuzú Cuatiá,Esquina,174
+Curuzú Cuatiá,Bella Vista,206
+Curuzú Cuatiá,Monte Caseros,78
+Mercedes (Corrientes),Santo Tomé,253
+Mercedes (Corrientes),Esquina,201
+Mercedes (Corrientes),Bella Vista,143
+Mercedes (Corrientes),Monte Caseros,152
+Santo Tomé,Ituzaingó,149
+Santo Tomé,Posadas,158
+Santo Tomé,Oberá,178
+Santo Tomé,Apóstoles,92
+Santo Tomé,Leandro N. Alem,152
+Santo Tomé,Puerto Rico,263
+Esquina,Bella Vista,208
+Esquina,Monte Caseros,220
+Ituzaingó,Posadas,98
+Ituzaingó,Oberá,186
+Ituzaingó,Apóstoles,119
+Ituzaingó,Leandro N. Alem,162
+Ituzaingó,Puerto Rico,224
+Ituzaingó,Formosa,258
+Ituzaingó,Clorinda,331
+Bella Vista,Resistencia,140
+Posadas,Oberá,94
+Posadas,Eldorado,199
+Posadas,Puerto Iguazú,285
+Posadas,Apóstoles,74
+Posadas,Leandro N. Alem,75
+Posadas,San Vicente,175
+Posadas,Puerto Rico,129
+Posadas,Bernardo de Irigoyen,307
+Posadas,Clorinda,353
+Oberá,Eldorado,157
+Oberá,Puerto Iguazú,261
+Oberá,Apóstoles,93
+Oberá,Leandro N. Alem,28
+Oberá,San Vicente,100
+Oberá,Puerto Rico,93
+Oberá,Bernardo de Irigoyen,241
+Eldorado,Puerto Iguazú,107
+Eldorado,Apóstoles,241
+Eldorado,Leandro N. Alem,180
+Eldorado,San Vicente,80
+Eldorado,Puerto Rico,71
+Eldorado,Bernardo de Irigoyen,119
+Puerto Iguazú,Apóstoles,339
+Puerto Iguazú,Leandro N. Alem,281
+Puerto Iguazú,San Vicente,186
+Puerto Iguazú,Puerto Rico,169
+Puerto Iguazú,Bernardo de Irigoyen,140
+Apóstoles,Leandro N. Alem,65
+Apóstoles,San Vicente,193
+Apóstoles,Puerto Rico,172
+Apóstoles,Bernardo de Irigoyen,334
+Leandro N. Alem,San Vicente,128
+Leandro N. Alem,Puerto Rico,113
+Leandro N. Alem,Bernardo de Irigoyen,268
+San Vicente,Puerto Rico,68
+San Vicente,Bernardo de Irigoyen,141
+Puerto Rico,Bernardo de Irigoyen,179
+Resistencia,Presidencia Roque Sáenz Peña,195
+Resistencia,Villa Ángela,205
+Resistencia,General San Martín (Chaco),130
+Resistencia,Quitilipi,167
+Resistencia,Formosa,196
+Resistencia,Clorinda,326
+Resistencia,El Colorado,160
+Presidencia Roque Sáenz Peña,Villa Ángela,109
+Presidencia Roque Sáenz Peña,Charata,106
+Presidencia Roque Sáenz Peña,Las Breñas,86
+Presidencia Roque Sáenz Peña,Juan José Castelli,114
+Presidencia Roque Sáenz Peña,General San Martín (Chaco),135
+Presidencia Roque Sáenz Peña,Quitilipi,28
+Presidencia Roque Sáenz Peña,Pirané,213
+Presidencia Roque Sáenz Peña,El Colorado,143
+Presidencia Roque Sáenz Peña,Las Lomitas,278
+Villa Ángela,Charata,74
+Villa Ángela,Las Breñas,78
+Villa Ángela,Juan José Castelli,216
+Villa Ángela,General San Martín (Chaco),213
+Villa Ángela,Quitilipi,110
+Villa Ángela,Quimilí,202
+Charata,Las Breñas,22
+Charata,Juan José Castelli,183
+Charata,General San Martín (Chaco),238
+Charata,Quitilipi,124
+Charata,El Colorado,249
+Charata,Añatuya,255
+Charata,Quimilí,156
+Charata,Monte Quemado,272
+Las Breñas,Juan José Castelli,162
+Las Breñas,General San Martín (Chaco),220
+Las Breñas,Quitilipi,106
+Las Breñas,El Colorado,229
+Las Breñas,Quimilí,175
+Las Breñas,Monte Quemado,271
+Juan José Castelli,General San Martín (Chaco),172
+Juan José Castelli,Quitilipi,132
+Juan José Castelli,Pirané,184
+Juan José Castelli,El Colorado,157
+Juan José Castelli,Las Lomitas,165
+Juan José Castelli,Ingeniero Juárez,311
+Juan José Castelli,Monte Quemado,266
+General San Martín (Chaco),Quitilipi,114
+General San Martín (Chaco),Formosa,148
+General San Martín (Chaco),Clorinda,256
+General San Martín (Chaco),Pirané,112
+General San Martín (Chaco),El Colorado,31
+General San Martín (Chaco),Las Lomitas,287
+Quitilipi,Formosa,261
+Quitilipi,Pirané,202
+Quitilipi,El Colorado,126
+Quitilipi,Las Lomitas,292
+Formosa,Clorinda,130
+Formosa,Pirané,128
+Formosa,El Colorado,145
+Clorinda,Pirané,177
+Clorinda,El Colorado,240
+Pirané,El Colorado,83
+Pirané,Las Lomitas,225
+El Colorado,Las Lomitas,259
+Las Lomitas,Ingeniero Juárez,188
+Las Lomitas,Monte Quemado,307
+Ingeniero Juárez,Monte Quemado,280
+Ingeniero Juárez,San Ramón de la Nueva Orán,320
+Ingeniero Juárez,Tartagal,302
+Ingeniero Juárez,Embarcación,290
+Ingeniero Juárez,Joaquín V. González,320
+Ingeniero Juárez,Libertador General San Martín,359
+Santiago del Estero,La Banda,8
+Santiago del Estero,Termas de Río Hondo,81
+Santiago del Estero,Añatuya,191
+Santiago del Estero,Frías,153
+Santiago del Estero,Quimilí,218
+Santiago del Estero,Loreto,69
+Santiago del Estero,San Miguel de Tucumán,172
+Santiago del Estero,Concepción,168
+Santiago del Estero,Monteros,168
+Santiago del Estero,Aguilares,167
+Santiago del Estero,Recreo,220
+La Banda,Termas de Río Hondo,79
+La Banda,Añatuya,192
+La Banda,Frías,160
+La Banda,Quimilí,215
+La Banda,Loreto,76
+La Banda,San Miguel de Tucumán,168
+La Banda,Concepción,168
+La Banda,Monteros,167
+La Banda,Aguilares,167
+Termas de Río Hondo,Frías,155
+Termas de Río Hondo,Loreto,133
+Termas de Río Hondo,San Miguel de Tucumán,100
+Termas de Río Hondo,Tafí Viejo,113
+Termas de Río Hondo,Concepción,89
+Termas de Río Hondo,Monteros,88
+Termas de Río Hondo,Aguilares,89
+Termas de Río Hondo,San Fernando del Valle de Catamarca,169
+Añatuya,Frías,271
+Añatuya,Quimilí,120
+Añatuya,Loreto,161
+Frías,Loreto,119
+Frías,Concepción,182
+Frías,Aguilares,171
+Frías,San Fernando del Valle de Catamarca,79
+Frías,Recreo,86
+Quimilí,Monte Quemado,250
+Quimilí,Loreto,226
+Monte Quemado,Metán,260
+Monte Quemado,Rosario de la Frontera,257
+Monte Quemado,Joaquín V. González,182
+Loreto,Aguilares,204
+Loreto,San Fernando del Valle de Catamarca,188
+Loreto,Recreo,166
+San Miguel de Tucumán,Tafí Viejo,13
+San Miguel de Tucumán,Concepción,82
+San Miguel de Tucumán,Monteros,57
+San Miguel de Tucumán,Aguilares,94
+San Miguel de Tucumán,Tafí del Valle,58
+San Miguel de Tucumán,Cafayate,135
+San Miguel de Tucumán,Rosario de la Frontera,139
+San Miguel de Tucumán,Santa María,100
+Tafí Viejo,Concepción,90
+Tafí Viejo,Monteros,65
+Tafí Viejo,Aguilares,102
+Tafí Viejo,Tafí del Valle,56
+Tafí Viejo,Cafayate,123
+Tafí Viejo,Metán,168
+Tafí Viejo,Rosario de la Frontera,129
+Tafí Viejo,Santa María,94
+Concepción,Monteros,25
+Concepción,Aguilares,12
+Concepción,Tafí del Valle,67
+Concepción,San Fernando del Valle de Catamarca,152
+Concepción,Andalgalá,92
+Concepción,Belén,175
+Concepción,Santa María,103
+Monteros,Aguilares,37
+Monteros,Tafí del Valle,49
+Monteros,Cafayate,158
+Monteros,San Fernando del Valle de Catamarca,177
+Monteros,Andalgalá,112
+Monteros,Santa María,92
+Aguilares,Tafí del Valle,78
+Aguilares,San Fernando del Valle de Catamarca,140
+Aguilares,Andalgalá,86
+Aguilares,Belén,171
+Aguilares,Fiambalá,240
+Aguilares,Santa María,112
+Tafí del Valle,Cafayate,109
+Tafí del Valle,Rosario de la Frontera,166
+Tafí del Valle,Andalgalá,121
+Tafí del Valle,Santa María,46
+Salta,Metán,109
+Salta,General Güemes,46
+Salta,Rosario de la Frontera,145
+Salta,Joaquín V. González,161
+Salta,Cachi,101
+Salta,San Antonio de los Cobres,134
+Salta,San Salvador de Jujuy,81
+Salta,Palpalá,75
+Salta,San Pedro de Jujuy,99
+Salta,Purmamarca,141
+San Ramón de la Nueva Orán,Tartagal,104
+San Ramón de la Nueva Orán,Embarcación,30
+San Ramón de la Nueva Orán,San Pedro de Jujuy,161
+San Ramón de la Nueva Orán,Libertador General San Martín,107
+San Ramón de la Nueva Orán,Purmamarca,165
+San Ramón de la Nueva Orán,Tilcara,144
+San Ramón de la Nueva Orán,Humahuaca,126
+San Ramón de la Nueva Orán,Abra Pampa,177
+San Ramón de la Nueva Orán,La Quiaca,208
+Tartagal,Embarcación,99
+Tartagal,San Pedro de Jujuy,263
+Tartagal,Libertador General San Martín,211
+Tartagal,Tilcara,242
+Tartagal,Humahuaca,212
+Tartagal,Abra Pampa,236
+Tartagal,La Quiaca,229
+Embarcación,Palpalá,195
+Embarcación,San Pedro de Jujuy,165
+Embarcación,Libertador General San Martín,116
+Embarcación,Purmamarca,185
+Embarcación,Tilcara,167
+Embarcación,Humahuaca,153
+Embarcación,Abra Pampa,207
+Embarcación,La Quiaca,237
+Cafayate,Metán,143
+Cafayate,Rosario de la Frontera,126
+Cafayate,Cachi,129
+Cafayate,Santa María,83
+Metán,General Güemes,111
+Metán,Rosario de la Frontera,40
+Metán,Joaquín V. González,114
+Metán,Cachi,152
+Metán,Palpalá,168
+General Güemes,Rosario de la Frontera,151
+General Güemes,Joaquín V. González,126
+General Güemes,Cachi,147
+General Güemes,San Antonio de los Cobres,166
+General Güemes,San Salvador de Jujuy,71
+General Güemes,Palpalá,58
+General Güemes,San Pedro de Jujuy,63
+General Güemes,Libertador General San Martín,119
+General Güemes,Purmamarca,136
+Rosario de la Frontera,Joaquín V. González,137
+Rosario de la Frontera,Cachi,170
+Joaquín V. González,San Salvador de Jujuy,188
+Joaquín V. González,Palpalá,173
+Joaquín V. González,San Pedro de Jujuy,148
+Cachi,San Antonio de los Cobres,122
+Cachi,San Salvador de Jujuy,162
+Cachi,Palpalá,163
+San Antonio de los Cobres,San Salvador de Jujuy,124
+San Antonio de los Cobres,Palpalá,135
+San Antonio de los Cobres,San Pedro de Jujuy,176
+San Antonio de los Cobres,Purmamarca,119
+San Antonio de los Cobres,Tilcara,141
+San Salvador de Jujuy,Palpalá,14
+San Salvador de Jujuy,San Pedro de Jujuy,53
+San Salvador de Jujuy,Libertador General San Martín,80
+San Salvador de Jujuy,Purmamarca,65
+San Salvador de Jujuy,Tilcara,82
+San Salvador de Jujuy,Humahuaca,131
+San Salvador de Jujuy,Abra Pampa,202
+Palpalá,San Pedro de Jujuy,42
+Palpalá,Libertador General San Martín,79
+Palpalá,Purmamarca,78
+Palpalá,Tilcara,94
+Palpalá,Humahuaca,141
+San Pedro de Jujuy,Libertador General San Martín,57
+San Pedro de Jujuy,Purmamarca,101
+San Pedro de Jujuy,Tilcara,108
+San Pedro de Jujuy,Humahuaca,148
+Libertador General San Martín,Purmamarca,87
+Libertador General San Martín,Tilcara,81
+Libertador General San Martín,Humahuaca,105
+Libertador General San Martín,Abra Pampa,183
+Libertador General San Martín,La Quiaca,249
+Purmamarca,Tilcara,25
+Purmamarca,Humahuaca,73
+Purmamarca,Abra Pampa,138
+Purmamarca,La Quiaca,219
+Tilcara,Humahuaca,50
+Tilcara,Abra Pampa,121
+Tilcara,La Quiaca,199
+Humahuaca,Abra Pampa,78
+Humahuaca,La Quiaca,151
+Abra Pampa,La Quiaca,84
+San Fernando del Valle de Catamarca,Andalgalá,135
+San Fernando del Valle de Catamarca,Belén,183
+San Fernando del Valle de Catamarca,Tinogasta,216
+San Fernando del Valle de Catamarca,Recreo,137
+San Fernando del Valle de Catamarca,La Rioja,178
+San Fernando del Valle de Catamarca,Aimogasta,121
+Andalgalá,Belén,84
+Andalgalá,Tinogasta,160
+Andalgalá,Fiambalá,154
+Andalgalá,Santa María,123
+Andalgalá,Aimogasta,143
+Belén,Tinogasta,83
+Belén,Fiambalá,70
+Belén,Santa María,173
+Belén,Chilecito,209
+Belén,Aimogasta,124
+Belén,Villa Unión,262
+Tinogasta,Fiambalá,50
+Tinogasta,La Rioja,198
+Tinogasta,Chilecito,147
+Tinogasta,Aimogasta,111
+Tinogasta,Villa Unión,184
+Fiambalá,Santa María,229
+Fiambalá,Chilecito,197
+Fiambalá,Aimogasta,150
+Fiambalá,Villa Unión,228
+Recreo,La Rioja,210
+Recreo,Chamical,204
+La Rioja,Chilecito,82
+La Rioja,Aimogasta,114
+La Rioja,Chamical,142
+La Rioja,Villa Unión,160
+La Rioja,San Agustín del Valle Fértil,177
+Chilecito,Aimogasta,114
+Chilecito,Chamical,211
+Chilecito,Villa Unión,87
+Chilecito,Jáchal,204
+Chilecito,San Agustín del Valle Fértil,196
+Aimogasta,Villa Unión,194
+Chamical,Chepes,136
+Chamical,San Agustín del Valle Fértil,138
+Chepes,Caucete,195
+Chepes,San Agustín del Valle Fértil,138
+Chepes,Quines,148
+Chepes,Santa Rosa del Conlara,206
+Villa Unión,Jáchal,138
+Villa Unión,San Agustín del Valle Fértil,197
+San Juan,Caucete,33
+San Juan,Jáchal,175
+San Juan,Calingasta,105
+San Juan,Barreal,107
+San Juan,San Agustín del Valle Fértil,172
+San Juan,Media Agua,60
+San Juan,Mendoza,183
+San Juan,San Martín (Mendoza),206
+San Juan,Uspallata,167
+Caucete,Jáchal,196
+Caucete,Calingasta,138
+Caucete,Barreal,135
+Caucete,San Agustín del Valle Fértil,165
+Caucete,Media Agua,47
+Caucete,Mendoza,177
+Caucete,San Martín (Mendoza),192
+Caucete,Uspallata,174
+Jáchal,Calingasta,165
+Jáchal,Barreal,204
+Jáchal,San Agustín del Valle Fértil,156
+Jáchal,Media Agua,235
+Calingasta,Barreal,42
+Calingasta,San Agustín del Valle Fértil,243
+Calingasta,Media Agua,143
+Calingasta,Mendoza,219
+Calingasta,Uspallata,168
+Barreal,Media Agua,126
+Barreal,Mendoza,181
+Barreal,San Martín (Mendoza),223
+Barreal,Tupungato,234
+Barreal,Uspallata,127
+Media Agua,Mendoza,130
+Media Agua,San Martín (Mendoza),147
+Media Agua,Tunuyán,224
+Media Agua,Tupungato,202
+Media Agua,Uspallata,132
+Media Agua,La Paz (Mendoza),221
+Mendoza,San Martín (Mendoza),49
+Mendoza,San Rafael,238
+Mendoza,Tunuyán,94
+Mendoza,Tupungato,73
+Mendoza,Uspallata,70
+Mendoza,La Paz (Mendoza),163
+San Martín (Mendoza),San Rafael,206
+San Martín (Mendoza),General Alvear,267
+San Martín (Mendoza),Malargüe,343
+San Martín (Mendoza),Tunuyán,91
+San Martín (Mendoza),Tupungato,85
+San Martín (Mendoza),Uspallata,118
+San Martín (Mendoza),La Paz (Mendoza),114
+San Rafael,General Alvear,84
+San Rafael,Malargüe,178
+San Rafael,Tunuyán,158
+San Rafael,Tupungato,190
+San Rafael,La Paz (Mendoza),177
+San Rafael,Santa Isabel,263
+General Alvear,Malargüe,215
+General Alvear,Tunuyán,237
+General Alvear,Tupungato,268
+General Alvear,La Paz (Mendoza),203
+General Alvear,Buena Esperanza,269
+General Alvear,Santa Isabel,186
+Malargüe,Tunuyán,261
+Malargüe,Tupungato,285
+Malargüe,Santa Isabel,303
+Malargüe,Chos Malal,264
+Malargüe,Rincón de los Sauces,264
+Tunuyán,Tupungato,32
+Tunuyán,Uspallata,137
+Tunuyán,La Paz (Mendoza),164
+Tupungato,Uspallata,106
+Tupungato,La Paz (Mendoza),179
+La Paz (Mendoza),San Luis,137
+San Luis,Villa Mercedes,110
+San Luis,Merlo,197
+San Luis,Justo Daract,149
+San Luis,Quines,155
+San Luis,Santa Rosa del Conlara,180
+San Luis,Naschel,120
+Villa Mercedes,Merlo,186
+Villa Mercedes,Justo Daract,39
+Villa Mercedes,Santa Rosa del Conlara,181
+Villa Mercedes,Naschel,102
+Villa Mercedes,Buena Esperanza,144
+Merlo,Quines,90
+Merlo,Santa Rosa del Conlara,23
+Merlo,Naschel,87
+Justo Daract,Naschel,127
+Justo Daract,Buena Esperanza,119
+Justo Daract,Realicó,188
+Quines,Santa Rosa del Conlara,68
+Quines,Naschel,104
+Santa Rosa del Conlara,Naschel,79
+Buena Esperanza,General Pico,204
+Buena Esperanza,Realicó,117
+Buena Esperanza,Eduardo Castex,188
+Buena Esperanza,Victorica,197
+Buena Esperanza,Santa Isabel,269
+Santa Rosa,General Pico,140
+Santa Rosa,General Acha,107
+Santa Rosa,Eduardo Castex,93
+Santa Rosa,Victorica,135
+Santa Rosa,Macachín,96
+Santa Rosa,Guatraché,161
+General Pico,Realicó,98
+General Pico,Eduardo Castex,68
+General Pico,Victorica,196
+General Pico,Macachín,198
+General Acha,Eduardo Castex,197
+General Acha,Victorica,179
+General Acha,Macachín,104
+General Acha,Guatraché,119
+General Acha,Choele Choel,278
+General Acha,Río Colorado,221
+Realicó,Eduardo Castex,118
+Realicó,Victorica,204
+Eduardo Castex,Victorica,129
+Eduardo Castex,Macachín,176
+Eduardo Castex,Santa Isabel,288
+Victorica,Santa Isabel,161
+Macachín,Guatraché,72
+Guatraché,Río Colorado,186
+Santa Isabel,Veinticinco de Mayo,222
+Santa Isabel,Rincón de los Sauces,263
+Santa Isabel,Catriel,238
+Veinticinco de Mayo,Neuquén,161
+Veinticinco de Mayo,Cutral Có,222
+Veinticinco de Mayo,Chos Malal,275
+Veinticinco de Mayo,Rincón de los Sauces,138
+Veinticinco de Mayo,Cipolletti,159
+Veinticinco de Mayo,General Roca,169
+Veinticinco de Mayo,Villa Regina,190
+Veinticinco de Mayo,Catriel,16
+Neuquén,Cutral Có,121
+Neuquén,Zapala,209
+Neuquén,Chos Malal,312
+Neuquén,Rincón de los Sauces,227
+Neuquén,Cipolletti,7
+Neuquén,General Roca,51
+Neuquén,Villa Regina,104
+Neuquén,Catriel,146
+Neuquén,Choele Choel,253
+Neuquén,Los Menucos,252
+Cutral Có,Zapala,87
+Cutral Có,Chos Malal,235
+Cutral Có,Rincón de los Sauces,209
+Cutral Có,Aluminé,180
+Cutral Có,Junín de los Andes,233
+Cutral Có,Piedra del Águila,172
+Cutral Có,Cipolletti,129
+Cutral Có,General Roca,172
+Cutral Có,Villa Regina,224
+Cutral Có,Catriel,207
+Cutral Có,Los Menucos,279
+Zapala,Chos Malal,204
+Zapala,Rincón de los Sauces,234
+Zapala,Aluminé,99
+Zapala,Junín de los Andes,174
+Zapala,San Martín de los Andes,214
+Zapala,Piedra del Águila,153
+Zapala,Cipolletti,216
+Chos Malal,Rincón de los Sauces,142
+Chos Malal,Aluminé,257
+Chos Malal,Catriel,270
+Rincón de los Sauces,Cipolletti,229
+Rincón de los Sauces,General Roca,261
+Rincón de los Sauces,Catriel,137
+Aluminé,Junín de los Andes,96
+Aluminé,San Martín de los Andes,130
+Aluminé,Villa La Angostura,216
+Aluminé,Piedra del Águila,139
+Aluminé,San Carlos de Bariloche,255
+Junín de los Andes,San Martín de los Andes,40
+Junín de los Andes,Villa La Angostura,123
+Junín de los Andes,Piedra del Águila,103
+Junín de los Andes,San Carlos de Bariloche,159
+Junín de los Andes,Ingeniero Jacobacci,240
+San Martín de los Andes,Villa La Angostura,86
+San Martín de los Andes,Piedra del Águila,131
+San Martín de los Andes,San Carlos de Bariloche,129
+San Martín de los Andes,El Bolsón,241
+San Martín de los Andes,Ingeniero Jacobacci,240
+San Martín de los Andes,Lago Puelo,256
+Villa La Angostura,Piedra del Águila,186
+Villa La Angostura,San Carlos de Bariloche,60
+Villa La Angostura,El Bolsón,161
+Villa La Angostura,Ingeniero Jacobacci,225
+Villa La Angostura,Lago Puelo,175
+Piedra del Águila,San Carlos de Bariloche,191
+Piedra del Águila,Los Menucos,227
+Piedra del Águila,Ingeniero Jacobacci,179
+Viedma,Río Colorado,268
+Viedma,San Antonio Oeste,197
+Viedma,Sierra Grande,260
+Viedma,Rawson,392
+Viedma,Trelew,398
+Viedma,Puerto Madryn,331
+San Carlos de Bariloche,El Bolsón,113
+San Carlos de Bariloche,Ingeniero Jacobacci,179
+San Carlos de Bariloche,Esquel,238
+San Carlos de Bariloche,Trevelin,262
+San Carlos de Bariloche,Lago Puelo,129
+El Bolsón,Ingeniero Jacobacci,215
+El Bolsón,Esquel,128
+El Bolsón,Trevelin,151
+El Bolsón,Lago Puelo,16
+El Bolsón,Tecka,216
+El Bolsón,Gobernador Costa,293
+Cipolletti,General Roca,44
+Cipolletti,Villa Regina,97
+Cipolletti,Catriel,143
+Cipolletti,Choele Choel,246
+Cipolletti,Los Menucos,254
+General Roca,Villa Regina,53
+General Roca,Catriel,155
+General Roca,Choele Choel,202
+General Roca,Los Menucos,247
+Villa Regina,Catriel,179
+Villa Regina,Choele Choel,149
+Villa Regina,San Antonio Oeste,308
+Villa Regina,Los Menucos,254
+Catriel,Choele Choel,291
+Choele Choel,Río Colorado,166
+Choele Choel,San Antonio Oeste,205
+Río Colorado,San Antonio Oeste,248
+San Antonio Oeste,Sierra Grande,124
+San Antonio Oeste,Los Menucos,318
+San Antonio Oeste,Rawson,343
+San Antonio Oeste,Trelew,338
+San Antonio Oeste,Gaiman,346
+San Antonio Oeste,Puerto Madryn,272
+Sierra Grande,Los Menucos,293
+Sierra Grande,Rawson,227
+Sierra Grande,Trelew,219
+Sierra Grande,Gaiman,225
+Sierra Grande,Puerto Madryn,158
+Los Menucos,Ingeniero Jacobacci,161
+Ingeniero Jacobacci,Esquel,274
+Ingeniero Jacobacci,Trevelin,302
+Ingeniero Jacobacci,Lago Puelo,227
+Ingeniero Jacobacci,Tecka,314
+Ingeniero Jacobacci,Paso de Indios,341
+Rawson,Trelew,21
+Rawson,Gaiman,38
+Rawson,Puerto Madryn,71
+Rawson,Paso de Indios,388
+Rawson,Camarones,209
+Trelew,Gaiman,18
+Trelew,Puerto Madryn,69
+Trelew,Paso de Indios,370
+Trelew,Camarones,210
+Gaiman,Puerto Madryn,82
+Gaiman,Comodoro Rivadavia,392
+Gaiman,Paso de Indios,351
+Gaiman,Camarones,203
+Puerto Madryn,Camarones,278
+Comodoro Rivadavia,Sarmiento,152
+Comodoro Rivadavia,Paso de Indios,305
+Comodoro Rivadavia,Camarones,218
+Comodoro Rivadavia,Río Mayo,260
+Comodoro Rivadavia,Caleta Olivia,78
+Comodoro Rivadavia,Pico Truncado,133
+Comodoro Rivadavia,Las Heras,163
+Comodoro Rivadavia,Puerto Deseado,291
+Comodoro Rivadavia,Perito Moreno,333
+Sarmiento,Gobernador Costa,251
+Sarmiento,Paso de Indios,231
+Sarmiento,Camarones,333
+Sarmiento,Río Mayo,112
+Sarmiento,Caleta Olivia,182
+Sarmiento,Pico Truncado,191
+Sarmiento,Las Heras,127
+Sarmiento,Perito Moreno,218
+Sarmiento,Los Antiguos,269
+Esquel,Trevelin,28
+Esquel,Lago Puelo,115
+Esquel,Tecka,92
+Esquel,Gobernador Costa,167
+Esquel,Paso de Indios,255
+Trevelin,Lago Puelo,137
+Trevelin,Tecka,83
+Trevelin,Gobernador Costa,153
+Trevelin,Paso de Indios,257
+Lago Puelo,Tecka,205
+Lago Puelo,Gobernador Costa,282
+Tecka,Gobernador Costa,77
+Tecka,Paso de Indios,178
+Tecka,Río Mayo,298
+Gobernador Costa,Paso de Indios,152
+Gobernador Costa,Río Mayo,221
+Gobernador Costa,Los Antiguos,347
+Paso de Indios,Río Mayo,270
+Camarones,Caleta Olivia,277
+Camarones,Pico Truncado,339
+Camarones,Puerto Deseado,394
+Río Mayo,Caleta Olivia,272
+Río Mayo,Pico Truncado,259
+Río Mayo,Las Heras,167
+Río Mayo,Perito Moreno,135
+Río Mayo,Los Antiguos,171
+Río Gallegos,Gobernador Gregores,393
+Río Gallegos,Puerto San Julián,333
+Río Gallegos,Comandante Luis Piedrabuena,220
+Río Gallegos,Puerto Santa Cruz,221
+Río Gallegos,El Calafate,308
+Río Gallegos,El Chaltén,436
+Río Gallegos,Río Turbio,259
+Río Gallegos,Veintiocho de Noviembre,248
+Caleta Olivia,Pico Truncado,62
+Caleta Olivia,Las Heras,130
+Caleta Olivia,Puerto Deseado,230
+Caleta Olivia,Perito Moreno,313
+Caleta Olivia,Los Antiguos,377
+Caleta Olivia,Puerto San Julián,383
+Pico Truncado,Las Heras,96
+Pico Truncado,Puerto Deseado,226
+Pico Truncado,Perito Moreno,273
+Pico Truncado,Los Antiguos,338
+Pico Truncado,Gobernador Gregores,331
+Pico Truncado,Puerto San Julián,336
+Las Heras,Puerto Deseado,320
+Las Heras,Perito Moreno,183
+Las Heras,Los Antiguos,247
+Las Heras,Gobernador Gregores,318
+Las Heras,Puerto San Julián,385
+Puerto Deseado,Puerto San Julián,264
+Puerto Deseado,Comandante Luis Piedrabuena,398
+Puerto Deseado,Puerto Santa Cruz,381
+Perito Moreno,Los Antiguos,64
+Perito Moreno,Gobernador Gregores,295
+Perito Moreno,El Chaltén,405
+Los Antiguos,Gobernador Gregores,319
+Los Antiguos,El Chaltén,388
+Gobernador Gregores,Puerto San Julián,233
+Gobernador Gregores,Comandante Luis Piedrabuena,201
+Gobernador Gregores,Puerto Santa Cruz,226
+Gobernador Gregores,El Calafate,275
+Gobernador Gregores,El Chaltén,244
+Gobernador Gregores,Río Turbio,412
+Gobernador Gregores,Veintiocho de Noviembre,413
+Puerto San Julián,Comandante Luis Piedrabuena,136
+Puerto San Julián,Puerto Santa Cruz,117
+Puerto San Julián,El Calafate,414
+Puerto San Julián,Río Turbio,491
+Puerto San Julián,Veintiocho de Noviembre,486
+Comandante Luis Piedrabuena,Puerto Santa Cruz,34
+Comandante Luis Piedrabuena,El Calafate,291
+Comandante Luis Piedrabuena,El Chaltén,355
+Comandante Luis Piedrabuena,Río Turbio,356
+Comandante Luis Piedrabuena,Veintiocho de Noviembre,351
+Puerto Santa Cruz,El Calafate,323
+Puerto Santa Cruz,El Chaltén,388
+Puerto Santa Cruz,Río Turbio,380
+Puerto Santa Cruz,Veintiocho de Noviembre,374
+El Calafate,El Chaltén,145
+El Calafate,Río Turbio,159
+El Calafate,Veintiocho de Noviembre,166
+El Chaltén,Río Turbio,297
+El Chaltén,Veintiocho de Noviembre,306
+Río Turbio,Veintiocho de Noviembre,13
+Río Grande,Tolhuin,104
+Río Grande,Ushuaia,143
+Tolhuin,Ushuaia,94
+Puerto Argentino,Puerto Darwin,92
+Puerto Argentino,Bahía Zorro,185
+Puerto Darwin,Bahía Zorro,93
