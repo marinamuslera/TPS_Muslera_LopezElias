@@ -21,7 +21,7 @@ int main() {
         }
     }
 
-    std::cout << "Jugadores con goles: " << goleadores.cantidad_de_jugadores() <<  std::endl;
+    std::cout << "Jugadores con goles: " << goleadores.cantidad_de_jugadores() <<  std::endl; 
     if (goleadores.cantidad_de_jugadores() >0){
         std::string maximo = goleadores.maximo_goleador();
         std::cout << "Maximo goleador: " << maximo << " (" << goleadores.goles(maximo) << " goles)" << std::endl;

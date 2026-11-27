@@ -112,7 +112,7 @@ Diccionario<K, V>::Diccionario() : tabla(CAPACIDAD_INICIAL) {
 
 template <typename K, typename V>
 void Diccionario<K, V>::insertar(const K& clave, const V& valor) {
-    V* actual = tabla.buscar(clave);
+    V* actual = tabla.buscar(clave); //si esta, actual = puntero a su valor. sino es null.
     if (actual != nullptr) {
         *actual = valor; //ya estaba, reemplazo el valor
     } else {
@@ -125,7 +125,7 @@ bool Diccionario<K, V>::pertenece(const K& clave) {
     return tabla.buscar(clave) != nullptr;
 }
 
-template <typename K, typename V>
+template <typename K, typename V> //pre: pertenece clave, xq sino se puede desreferenciar nullptr
 V Diccionario<K, V>::obtener(const K& clave) {
     return *tabla.buscar(clave); //* desreferencia: buscar() encuentra la dirección de memoria, * accede al valor en esa dirección
 }

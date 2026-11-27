@@ -1,9 +1,9 @@
 #ifndef TABLA_HASH_H
 #define TABLA_HASH_H
 
-#include <cstddef>
+#include <cstddef> //define size t
 
-#include "funcion_hash.h"
+#include "funcion_hash.h" 
 
 #include <vector> // es el tipo que elegimos para representar la tabla de hash
 
@@ -26,11 +26,11 @@
 // Complejidades: n es la cantidad de claves guardadas y c la capacidad.
 // "Promedio" supone que la funcion de hash reparte las claves de manera
 // uniforme y que calcularla (y comparar dos claves) cuesta O(1).
-template <typename K, typename V>
+template <typename K, typename V> //claves y valores
 class TablaHash {
   private:
     std::vector<std::vector<std::pair<K, V>>> buckets; // K y V porque es un template: no se sabe qué tipos de datos se pasan.
-    size_t cantidad_actual; // es size_t porque vector.size() devuelve size_t
+    size_t cantidad_actual; // es size_t porque vector.size() devuelve size_t (claves guardadas)
 
     // función privada de redimensionar (porque elegimos representación con vector):
     void redimensionar(); 
@@ -161,11 +161,11 @@ TablaHash<K, V>::~TablaHash() {
 }
 
 template <typename K, typename V>
-void TablaHash<K, V>::insertar(const K& clave, const V& valor) {
+void TablaHash<K, V>::insertar(const K& clave, const V& valor) { //pre: la clave no esta. eso se encarga el diccionario.
     size_t indice = funcion_hash(clave)%capacidad(); // función_hash está en un include al principio del archivo; %capacidad() es para que caiga en el vector.
     (buckets[indice]).push_back({clave, valor}); 
     cantidad_actual++;
-    if (cantidad_actual > FACTOR_DE_CARGA_MAXIMO * capacidad()) {
+    if (cantidad_actual > FACTOR_DE_CARGA_MAXIMO * capacidad()) { //si en promedio, hay mas de 2 por bucket.
         redimensionar();
     }
 } 
@@ -173,11 +173,11 @@ void TablaHash<K, V>::insertar(const K& clave, const V& valor) {
 template <typename K, typename V>
 void TablaHash<K, V>::redimensionar() {
     size_t nueva_capacidad = capacidad()*2;
-    std::vector<std::vector<std::pair<K, V>>> buckets_nuevos = std::vector<std::vector<std::pair<K, V>>>(nueva_capacidad); //SI tengo que declarar buckets_nuevos porque es la primera vez que aparece
+    std::vector<std::vector<std::pair<K, V>>> buckets_nuevos = std::vector<std::vector<std::pair<K, V>>>(nueva_capacidad); // arr nuevo de buckeys. SI tengo que declarar buckets_nuevos porque es la primera vez que aparece
     for (std::vector<std::pair<K, V>>& bucket: buckets) { //para cada bucket
-        for (std::pair<K, V>& elemento : bucket) { //para cada tupla del bucket
-            size_t indice = funcion_hash(elemento.first)%nueva_capacidad; // .first es el primer elemento del par
-            (buckets_nuevos[indice]).push_back(elemento);
+        for (std::pair<K, V>& elemento : bucket) { //para cada tupla (par) del bucket
+            size_t indice = funcion_hash(elemento.first)%nueva_capacidad; // .first es el primer elemento del par (clave)
+            (buckets_nuevos[indice]).push_back(elemento); 
         }
     }
     buckets= buckets_nuevos;
@@ -195,12 +195,14 @@ void TablaHash<K, V>::eliminar(const K& clave) {
     }
     buckets[indice].erase(buckets[indice].begin()+posicion_a_eliminar); // begin()+p= desde el principio, posición p; erase() necesita la posición de p, y buckets[indice][p] te da el contenido 
     cantidad_actual--;
+    //erase no recibe un número ni el contenido, sino un iterador de vector (algo que señala una posición). begin() señala al primer elemento; +
+    //posicion_a_eliminar avanza hasta el que queremos.
 }
 
 template <typename K, typename V>
 V* TablaHash<K, V>::buscar(const K& clave) {
     size_t indice = funcion_hash(clave)%capacidad();
-    for (std::pair<K, V> &elemento : buckets[indice]) { // importante: le pongo el & a "elemento" porque hay que pasarlo por referencia para obtener su puntero.
+    for (std::pair<K, V> &elemento : buckets[indice]) { // importante: le pongo el & a "elemento" porque hay que pasarlo por referencia para obtener su puntero. sino seria copia local.
         if (elemento.first == clave) {
             return &elemento.second; // &=dirección de memoria
         }
@@ -226,14 +228,14 @@ size_t TablaHash<K, V>::colisiones() {
             buckets_no_vacios++;
         }
     }
-    return cantidad_actual - buckets_no_vacios;
+    return cantidad_actual - buckets_no_vacios; //claves guardadas - (primeras claves guardada)
 }
 
 // El "typename" le avisa al compilador que TablaHash<K, V>::Iterador es un tipo.
 template <typename K, typename V>
 typename TablaHash<K, V>::Iterador TablaHash<K, V>::crear_iterador() {
-    Iterador it;
-    it.tabla = this;
+    Iterador it; //crea el iterador
+    it.tabla = this; //le guarda un puntero a esta tabla
     it.bucket_actual = 0;
     it.posicion_actual = 0;
     while (it.bucket_actual<capacidad() && buckets[it.bucket_actual].size()==0) {

@@ -1,5 +1,7 @@
 #include <fstream>
+#include <functional>
 #include <iostream>
+#include <queue>
 #include <random>
 #include <sstream>
 #include <string>
@@ -79,13 +81,49 @@ int indiceDe(const GrafoCiudades& g, const string& ciudad) {
     return -1;
 }
 
+// Arma un mapa ciudad: posicion en g.get_vertices(), para no usar indiceDe
+// adentro de los loops (indiceDe recorre todo el vector, es O(n) cada vez).
+unordered_map<string, int> mapaDeIndices(const GrafoCiudades& g) {
+    vector<string> ciudades = g.get_vertices();
+    unordered_map<string, int> indice;
+    for (int i = 0; i < (int)ciudades.size(); i++) {
+        indice[ciudades[i]] = i;
+    }
+    return indice;
+}
+
+
 // ================================================================
 //                  EJERCICIO 1: COMPONENTES CONEXAS
 // ================================================================
 
 vector<vector<string>> componentesConexas(const GrafoCiudades& g) {
-    // TODO: implementar
-    return {};
+    // BFS desde cada ciudad que todavia no fue visitada: todo lo que alcanza
+    // ese BFS es una componente. Cada vertice entra una vez a la cola.
+    vector<string> ciudades = g.get_vertices();
+    unordered_map<string, bool> visitada;
+    vector<vector<string>> componentes;
+    for (const string& inicio : ciudades) {
+        if (visitada[inicio]) continue;
+        // nueva componente: BFS desde inicio
+        vector<string> componente;
+        queue<string> cola;
+        cola.push(inicio);
+        visitada[inicio] = true;
+        while (!cola.empty()) {
+            string actual = cola.front();
+            cola.pop();
+            componente.push_back(actual);
+            for (const string& vecino : g.get_neighbors(actual)) {
+                if (!visitada[vecino]) {
+                    visitada[vecino] = true;  // se marca al encolar, asi no entra dos veces
+                    cola.push(vecino);
+                }
+            }
+        }
+        componentes.push_back(componente);
+    }
+    return componentes;
 }
 
 // ================================================================
@@ -94,12 +132,53 @@ vector<vector<string>> componentesConexas(const GrafoCiudades& g) {
 
 const int INFINITO = 1000000000;
 
+// Dijkstra desde una ciudad: devuelve la distancia minima a todas las demas.
+// BFS no sirve porque cuenta cantidad de rutas y no km: un camino con menos
+// rutas puede ser mas largo en km. Dijkstra funciona porque las distancias
+// nunca son negativas. Con cola de prioridad cuesta O((n + m) log n).
+vector<int> dijkstra(const GrafoCiudades& g, const unordered_map<string, int>& indice,
+                     const string& origen) {
+    vector<string> ciudades = g.get_vertices();
+    int n = (int)ciudades.size();
+    vector<int> dist(n, INFINITO);
+    vector<bool> cerrada(n, false);  // ya tiene su distancia definitiva
+    // la cola guarda pares (distancia, indice de la ciudad); con greater<>
+    // el de menor distancia queda arriba
+    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> cola;
+    int o = indice.at(origen);
+    dist[o] = 0;
+    cola.push({0, o});
+    while (!cola.empty()) {
+        int d = cola.top().first;
+        int u = cola.top().second;
+        cola.pop();
+        if (cerrada[u]) continue;  // entrada vieja de la cola, ya se proceso
+        cerrada[u] = true;
+
+        for (const string& vecino : g.get_neighbors(ciudades[u])) {
+            int v = indice.at(vecino);
+            int peso = g.get_edge_data(ciudades[u], vecino).value();
+            if (d + peso < dist[v]) {  // relajacion
+                dist[v] = d + peso;
+                cola.push({dist[v], v});
+            }
+        }
+    }
+    return dist;
+}
+
 // dist[i][j]: distancia mínima en km entre la ciudad i y la ciudad j, con
 // las ciudades numeradas en el orden de g.get_vertices() (INFINITO si no hay
 // camino).
 vector<vector<int>> distanciasTodosConTodos(const GrafoCiudades& g) {
-    // TODO: implementar
-    return {};
+    // Dijkstra desde cada una de las n ciudades: O(n (n + m) log n) en total
+    vector<string> ciudades = g.get_vertices();
+    unordered_map<string, int> indice = mapaDeIndices(g);
+    vector<vector<int>> dist;
+    for (const string& origen : ciudades) {
+        dist.push_back(dijkstra(g, indice, origen));
+    }
+    return dist;
 }
 
 // ================================================================
@@ -123,8 +202,20 @@ public:
 };
 
 Diametro diametro(const GrafoCiudades& g, const vector<vector<int>>& dist) {
-    // TODO: implementar
-    return {0, "", ""};
+    // Mayor distancia minima entre dos ciudades, usando la matriz del
+    // ejercicio 2. Los pares sin camino (INFINITO) se saltean: si no, el
+    // diametro daria infinito. O sea que es el diametro tomando solo los pares
+    // conectados. Recorre la matriz una vez: O(n^2).
+    vector<string> ciudades = g.get_vertices();
+    Diametro mayor = {0, "", ""};
+    for (int i = 0; i < (int)dist.size(); i++) {
+        for (int j = i + 1; j < (int)dist.size(); j++) {  // j > i: cada par una vez
+            if (dist[i][j] != INFINITO && dist[i][j] > mayor.distancia) {
+                mayor = {dist[i][j], ciudades[i], ciudades[j]};
+            }
+        }
+    }
+    return mayor;
 }
 
 // ================================================================
@@ -169,11 +260,30 @@ int main(int argc, char* argv[]) {
     cout << "=== Ejercicio 1 ===\n";
     vector<vector<string>> componentes = componentesConexas(g);
     cout << "Componentes conexas: " << componentes.size() << "\n";
-    // TODO: tamaño de la más grande y ciudades que quedan fuera de ella
+     int masGrande = 0;  // posicion de la componente mas grande
+    for (int i = 1; i < (int)componentes.size(); i++) {
+        if (componentes[i].size() > componentes[masGrande].size()) masGrande = i;
+    }
+    cout << "Tamaño de la más grande: " << componentes[masGrande].size() << " ciudades\n";
+    cout << "Ciudades fuera de ella:\n";
+    for (int i = 0; i < (int)componentes.size(); i++) {
+        if (i == masGrande) continue;
+        cout << "  Componente de " << componentes[i].size() << ":";
+        for (const string& c : componentes[i]) {
+            cout << " " << c << " (" << g.get_vertex_data(c).value_or("?") << ")";
+        }
+        cout << "\n";
+    }
 
     cout << "\n=== Ejercicio 2 ===\n";
     vector<vector<int>> dist = distanciasTodosConTodos(g);
-    // TODO: distancias Buenos Aires - La Quiaca y Buenos Aires - Ushuaia
+     int ba = indiceDe(g, "Buenos Aires");
+    for (string destino : {"La Quiaca", "Ushuaia"}) {
+        int j = indiceDe(g, destino);
+        cout << "Buenos Aires - " << destino << ": ";
+        if (dist[ba][j] == INFINITO) cout << "no hay camino\n";
+        else cout << dist[ba][j] << " km\n";
+    }
 
     cout << "\n=== Ejercicio 3 ===\n";
     cout << "Triángulos: " << contarTriangulos(g) << "\n";
